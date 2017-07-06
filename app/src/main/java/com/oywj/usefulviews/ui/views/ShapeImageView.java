@@ -1,4 +1,4 @@
-package com.oywj.usefulviews.shapeviews;
+package com.oywj.usefulviews.ui.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;

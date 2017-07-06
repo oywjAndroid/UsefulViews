@@ -1,19 +1,18 @@
-package com.oywj.usefulviews;
+package com.oywj.usefulviews.ui.activties;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.oywj.usefulviews.activties.ShapeImageViewActivity;
+import com.oywj.usefulviews.R;
 import com.oywj.usefulviews.utils.JumpUtils;
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView mListView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

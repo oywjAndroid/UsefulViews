@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Base SwipeBackActivity theme. -->
+    <style name="AppTheme.SwipeBack">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
 </resources>

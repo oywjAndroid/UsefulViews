@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 25
@@ -17,11 +18,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     //noinspection GradleDependency
     compile 'com.android.support:appcompat-v7:25.3.1'
+
+    // butterKnife
+    compile 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+
+    // okHttp
+    compile files('libs/okhttp-3.8.0.jar')
+    compile files('libs/okio-1.13.0.jar')
+
+    // fragmentation
+    compile 'me.yokeyword:fragmentation-core:1.0.4'
+
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessLeaf">
+
+        <com.oywj.usefulviews.ui.views.ShapeImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="45dp"
+            android:src="@mipmap/icon2"
+            app:shapeType="normal" />
+
+        <com.oywj.usefulviews.ui.views.ShapeImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:src="@mipmap/icon2"
+            app:shapeType="circle"
+            app:stroke="true"
+            app:strokeColor="@color/colorAccent"
+            app:strokeWidth="10" />
+
+        <com.oywj.usefulviews.ui.views.ShapeImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:src="@mipmap/icon2"
+            app:shapeType="round"
+            app:stroke="true"
+            app:strokeColor="@color/colorAccent"
+            app:strokeWidth="10" />
+
+        <com.oywj.usefulviews.ui.views.ShapeImageView
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:src="@mipmap/icon2"
+            app:shapeType="oval"
+            app:stroke="true"
+            app:strokeColor="@color/colorAccent"
+            app:strokeWidth="10" />
+
+    </LinearLayout>
+</ScrollView>
