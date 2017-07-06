@@ -21,6 +21,7 @@
             app:shapeType="normal" />
 
         <com.oywj.usefulviews.ui.views.ShapeImageView
+            android:id="@+id/circle_view"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
