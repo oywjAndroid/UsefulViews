@@ -3,10 +3,11 @@ package com.oywj.usefulviews.ui.basic;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-import android.support.v7.app.AppCompatDelegate;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+
+import com.squareup.leakcanary.LeakCanary;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,17 +30,20 @@ public class BasicApplication extends Application {
         return instance;
     }
 
-    static {
-        AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_NO);
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
+        initDebugLeakCanary();
         instance = this;
         //初始化屏幕宽高
         getScreenSize();
+    }
+
+    private void initDebugLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return;
+        }
+        LeakCanary.install(this);
     }
 
     public void addActivity(Activity act) {

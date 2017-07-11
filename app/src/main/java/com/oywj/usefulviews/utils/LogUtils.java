@@ -269,4 +269,13 @@ public class LogUtils {
         }
         i("---end---");
     }
+
+    /**
+     * 是否为Debug模式
+     *
+     * @return boolean
+     */
+    public static boolean isDebug() {
+        return mDebuggable == LEVEL_ALL;
+    }
 }

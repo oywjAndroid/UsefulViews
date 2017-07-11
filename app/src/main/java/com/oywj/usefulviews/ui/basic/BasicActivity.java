@@ -65,7 +65,7 @@ public abstract class BasicActivity<T extends Presenter> extends SwipeBackActivi
     }
 
     private void checkAndBindData(Bundle savedInstanceState) {
-        Log.d("BasicActivity", "checkAndBindData");
+        LogUtils.d("BasicActivity", "checkAndBindData");
         if (savedInstanceState == null) {
             // 到这里说明Activity是第一次created或者是之前被关闭时并没有保存实例状态数据
             // ...执行用户获取数据的逻辑
