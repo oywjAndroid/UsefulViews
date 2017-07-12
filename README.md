@@ -15,8 +15,13 @@
 
    > 3.ShapeImageView主要处理的是展示不同形状的头像，支持圆形、圆角矩形、椭圆形头像，同时可以为头像设置不同颜色的边框。
 
+   > 4.使用RxJava、Retrofit封装了网络请求框架，支持配置Https请求。
+
 
 ### Reference Library：
 
-   * <a href="https://github.com/YoKeyword/Fragmentation">Butterknife</a>
+   * <a href="https://github.com/JakeWharton/butterknife">Butterknife</a>
+   * <a href="https://github.com/ReactiveX/RxJava">Rxjava</a> 
+   * <a href="https://github.com/square/retrofit">Retrofit</a> 
+   * <a href="https://github.com/bumptech/glide">Glide</a> 
    * <a href="https://github.com/YoKeyword/Fragmentation">Fragmentation</a> 
