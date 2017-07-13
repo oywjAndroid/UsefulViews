@@ -6,7 +6,6 @@ import android.text.TextUtils;
 
 import com.bumptech.glide.util.Preconditions;
 import com.oywj.usefulviews.BuildConfig;
-import com.oywj.usefulviews.data.Constant;
 import com.oywj.usefulviews.ui.basic.BasicApplication;
 import com.oywj.usefulviews.utils.FileUtils;
 import com.oywj.usefulviews.utils.LogUtils;
@@ -16,7 +15,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
-import java.nio.charset.Charset;
 import java.security.KeyStore;
 import java.security.SecureRandom;
 import java.security.cert.CertificateFactory;
@@ -32,11 +30,7 @@ import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
-import okio.Buffer;
-import okio.BufferedSource;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -44,11 +38,11 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * HttpManager：主要负责的功能是进行网络请求的调度工作。
- * <p/>
+ * <p>
  * 1.将网络请求进行接口化--（Retrofit）。
- * <p/>
+ * <p>
  * 2.将实际的网络请求分发到OkHttpClient执行--（OKHttp）。
- * <p/>
+ * <p>
  * 3.对网络请求完成后的数据结果进行同步、异步分发--（RxJava），且支持配置ConvertFactory对数据解析处理。
  */
 public class HttpManager {
@@ -65,7 +59,6 @@ public class HttpManager {
         this.context = context;
         mRetrofitBuilder =
                 new Retrofit.Builder()
-                        .baseUrl(Constant.baseUrl)
                         .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                         .addConverterFactory(GsonConverterFactory.create());
 
@@ -77,9 +70,6 @@ public class HttpManager {
                         .addNetworkInterceptor(new CacheInterceptor())
                         .cache(generateCache());
 
-        if (LogUtils.isDebug()) {
-            mDefaultHttpBuilder.addInterceptor(new LogInterceptor());
-        }
     }
 
     public static HttpManager with(Context context) {
@@ -209,26 +199,34 @@ public class HttpManager {
     }
 
     /**
-     * 创建具体的网络请求接口实现类对象，并且返回的String。
+     * 创建具体的网络请求接口实现类对象，并且返回数据的原始形式。
      *
      * @param apiClass 网络请求接口
      * @return 网络请求接口实现类对象
      */
-    public <Api> Api createApiForString(Class<Api> apiClass) {
-        return createApiForString(apiClass, mDefaultHttpBuilder);
+    public <Api> Api createApiForOriginal(Class<Api> apiClass) {
+        return createApiForOriginal(apiClass, mDefaultHttpBuilder);
     }
 
-    public <Api> Api createApiForString(Class<Api> apiClass, OkHttpClient.Builder builder) {
+    /**
+     * 创建具体的网络请求接口实现类对象，并且返回数据的原始形式。
+     *
+     * @param apiClass 网络请求接口
+     * @param builder  OkHttpBuilder
+     */
+    public <Api> Api createApiForOriginal(Class<Api> apiClass, OkHttpClient.Builder builder) {
         String baseUrl = getBaseUrl(apiClass);
+        Retrofit.Builder retrofitBuild = new Retrofit.Builder();
         if (!TextUtils.isEmpty(baseUrl)) {
-            mRetrofitBuilder.baseUrl(baseUrl);
+            retrofitBuild.baseUrl(baseUrl);
         }
-        Retrofit retrofit = mRetrofitBuilder
+
+        Retrofit retrofit = retrofitBuild
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(getBaseUrl(apiClass))
                 .client(builder.build())
                 .build();
+
         return retrofit.create(apiClass);
     }
 
@@ -283,83 +281,5 @@ public class HttpManager {
             return chain.proceed(request);
         }
     }
-
-    /**
-     * 网络请求日志
-     */
-    static class LogInterceptor implements Interceptor {
-
-        private static final String TAG = "LogInterceptor";
-        private static final Charset UTF8 = Charset.forName("UTF-8");
-
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            LogUtils.d(TAG, "before chain,request()");
-            Request request = chain.request();
-            Response response;
-            long t1 = System.nanoTime();
-            response = chain.proceed(request);
-            long t2 = System.nanoTime();
-            double time = (t2 - t1) / 1e6d;
-            String acid = request.url().queryParameter("ACID");     //本项目log特定参数项目接口acid
-            String userId = request.url().queryParameter("userId"); //本项目log特定参数用户id
-            String type = "";
-            switch (request.method()) {
-                case "GET":
-                    type = "GET";
-                    break;
-                case "POST":
-                    type = "POST";
-                    break;
-                case "PUT":
-                    type = "PUT";
-                    break;
-                case "DELETE":
-                    type = "DELETE";
-                    break;
-            }
-            ResponseBody body = response.body();
-            if (body != null) {
-                body.source();
-                BufferedSource source = body.source();
-                source.request(Long.MAX_VALUE); // Buffer the entire body.
-                Buffer buffer = source.buffer();
-                String logStr = "\n--------------------".concat(TextUtils.isEmpty(acid) ? "" : acid).concat("  begin--------------------\n")
-                        .concat(type)
-                        .concat("\nacid->").concat(TextUtils.isEmpty(acid) ? "" : acid)
-                        .concat("\nuserId->").concat(TextUtils.isEmpty(userId) ? "" : userId)
-                        .concat("\nnetwork code->").concat(response.code() + "")
-                        .concat("\nurl->").concat(request.url() + "")
-                        .concat("\ntime->").concat(time + "")
-                        .concat("\nrequest headers->").concat(request.headers() + "")
-                        .concat("request->").concat(bodyToString(request.body()))
-                        .concat("\nbody->").concat(buffer.clone().readString(UTF8));
-                LogUtils.i(TAG, logStr);
-            }
-            return response;
-        }
-
-        private static String bodyToString(final RequestBody request) {
-
-            try {
-                final Buffer buffer = new Buffer();
-                request.writeTo(buffer);
-                return buffer.readUtf8();
-            } catch (final IOException e) {
-                return "did not work";
-            }
-        }
-    }
-
-    /**
-     * 网络状态拦截器
-     */
-//    static class NetworkStatusInterceptor implements Interceptor {
-//
-//        @Override
-//        public Response intercept(Chain chain) throws IOException {
-//            return chain.proceed();
-//        }
-//    }
 
 }

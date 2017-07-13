@@ -9,6 +9,27 @@ public class HttpResult<T> {
     private String msg;
     private T data;
 
+    // --------------test-------------------
+    private T results;
+    private boolean error;
+
+    public boolean isError() {
+        return error;
+    }
+
+    public void setError(boolean error) {
+        this.error = error;
+    }
+
+    public T getResults() {
+        return results;
+    }
+
+    public void setResults(T results) {
+        this.results = results;
+    }
+    // ---------------test-------------------
+
     public T getData() {
         return data;
     }

@@ -27,8 +27,9 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
         return tag;
     }
 
-    public void setTag(String tag) {
+    public RxSubscriber setTag(String tag) {
         this.tag = tag;
+        return this;
     }
 
     @Override
@@ -40,15 +41,20 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
     public void onError(Throwable e) {
         if (e instanceof TimeoutException || e instanceof SocketTimeoutException
                 || e instanceof ConnectException) {
-            onFail(ErrorType.NET_WORT_ERROR);
+            onFail(ErrorType.NET_WORT_ERROR, e);
         } else if (e instanceof JsonSyntaxException) {
-            onFail(ErrorType.JSON_SYNTAX_ERROR);
+            onFail(ErrorType.JSON_SYNTAX_ERROR, e);
         } else if (e instanceof ApiException) {
             ErrorType.STATUS_CODE_ERROR.setValue(((ApiException) e).getCode());
-            onFail(ErrorType.STATUS_CODE_ERROR);
+            onFail(ErrorType.STATUS_CODE_ERROR, e);
         } else {
-            onFail(ErrorType.UNKNOWN_ERROR);
+            onFail(ErrorType.UNKNOWN_ERROR, e);
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     @Override
@@ -59,16 +65,16 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
     /**
      * 获取数据成功
      *
-     * @param t 数据类型
+     * @param data 具体数据
      */
-    public abstract void onSuccess(T t);
+    public abstract void onSuccess(T data);
 
     /**
      * 获取数据失败
      *
      * @param errorType 获取数据失败信息
      */
-    public abstract void onFail(ErrorType errorType);
+    public abstract void onFail(ErrorType errorType, Throwable e);
 
     /**
      * 关于网络请求发生错误的分类

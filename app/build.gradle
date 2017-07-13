@@ -30,6 +30,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //noinspection GradleDependency
     compile 'com.android.support:appcompat-v7:25.3.1'
+    //noinspection GradleDependency
+    compile 'com.android.support:design:25.3.1'
 
     // butterKnife
     compile 'com.jakewharton:butterknife:8.6.0'

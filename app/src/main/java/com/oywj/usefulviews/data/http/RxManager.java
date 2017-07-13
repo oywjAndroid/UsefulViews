@@ -1,10 +1,12 @@
 package com.oywj.usefulviews.data.http;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.oywj.usefulviews.data.http.core.ApiException;
 import com.oywj.usefulviews.data.http.core.HttpResult;
 import com.oywj.usefulviews.data.http.core.RxSubscriber;
+import com.oywj.usefulviews.utils.LogUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -65,6 +67,25 @@ public class RxManager {
                 .subscribe(subscriber);
         subscriptionMap.put(subscriber.getTag(), subscription);
     }
+
+    // -----------test----------
+    public <T> void doSubscribeTOfGsonConvert2(Observable<HttpResult<T>> observable, RxSubscriber<T> subscriber) {
+        Subscription subscription = observable
+                .flatMap(new Func1<HttpResult<T>, Observable<T>>() {
+                    @Override
+                    public Observable<T> call(HttpResult<T> httpResult) {
+                        if (httpResult.isError()) {
+                            throw new ApiException("error");
+                        }
+                        return Observable.just(httpResult.getResults());
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+        subscriptionMap.put(subscriber.getTag(), subscription);
+    }
+    // -----------test----------
 
     /**
      * 执行任务并订阅，此方法适用于服务器返回了JSON数据，并且数据中不包含数据实体。
@@ -180,8 +201,9 @@ public class RxManager {
         Subscription subscription = subscriptionMap.get(tag);
         if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
+            LogUtils.d(tag + ",removeSubscription");
         }
+        subscriptionMap.remove(tag);
     }
-
 
 }

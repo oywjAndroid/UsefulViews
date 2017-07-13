@@ -4,12 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <!-- 同一个布局文件中引用多个相同的include，通过id进行区分-->
+    <include layout="@layout/toolbar" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="消息"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp" />
+        android:layout_marginTop="?attr/actionBarSize" />
 
 </FrameLayout>

@@ -150,8 +150,8 @@ public abstract class BasicFragment<P extends Presenter> extends SwipeBackFragme
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         if (mPresenter != null) {
             mPresenter.destroyConsumables();
         }
