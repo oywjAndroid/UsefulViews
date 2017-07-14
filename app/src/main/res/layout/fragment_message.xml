@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:refresh="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -7,10 +8,23 @@
     <!-- 同一个布局文件中引用多个相同的include，通过id进行区分-->
     <include layout="@layout/toolbar" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <com.oywj.usefulviews.ui.views.PullDownRefreshView
+        android:id="@+id/pull_down_refresh_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize" />
+        android:layout_marginTop="?attr/actionBarSize"
+        refresh:ptr_duration_to_close="200"
+        refresh:ptr_duration_to_close_header="1000"
+        refresh:ptr_keep_header_when_refresh="true"
+        refresh:ptr_pull_to_fresh="false"
+        refresh:ptr_ratio_of_header_height_to_refresh="1.2"
+        refresh:ptr_resistance="1.7">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.oywj.usefulviews.ui.views.PullDownRefreshView>
 
 </FrameLayout>

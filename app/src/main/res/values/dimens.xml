@@ -3,4 +3,10 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="bottom_bar_height">55dp</dimen>
+    <dimen name="pull_down_anim_view_size">48dp</dimen>
+    <dimen name="pull_down_refresh_desc_margin">5dp</dimen>
+    <dimen name="pull_down_desc_margin_left">10dp</dimen>
+    <dimen name="pull_down_desc_margin_top">3dp</dimen>
+    <dimen name="refresh_desc_txt_size">15sp</dimen>
+    <dimen name="desc_tv_size">12sp</dimen>
 </resources>

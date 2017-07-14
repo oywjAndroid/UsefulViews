@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">UsefulViews</string>
+    <string name="ptr_content_empty">The content view in PtrFrameLayout is empty. Do you forget to specify its id in xml layout file?</string>
+    <string name="pull_down_refresh_desc">so that financial wealth is gusto</string>
+    <string name="pull_down">pull down to refresh</string>
+    <string name="release_refresh_txt">release refresh...</string>
+    <string name="loading_text">loading...</string>
     <string-array name="list_items">
-        <item>ShapeImageView(多种形状头像)</item>
+        <item>ShapeImageView</item>
     </string-array>
 </resources>
