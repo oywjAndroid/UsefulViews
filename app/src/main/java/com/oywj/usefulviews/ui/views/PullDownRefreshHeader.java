@@ -57,7 +57,8 @@ public class PullDownRefreshHeader extends FrameLayout implements PtrUIHandler {
     }
 
     private void reset() {
-        if (mAnim != null && mAnim.isRunning()) {
+        if (mAnim != null) {
+            mAnim.setOneShot(true);
             mAnim.stop();
         }
         mDescTv.setText(R.string.pull_down);
@@ -66,6 +67,7 @@ public class PullDownRefreshHeader extends FrameLayout implements PtrUIHandler {
     @Override
     public void onUIRefreshPrepare(PtrFrameLayout frame) {
         LogUtils.d("onUIRefreshPrepare()...");
+        reset();
     }
 
     @Override
@@ -77,7 +79,6 @@ public class PullDownRefreshHeader extends FrameLayout implements PtrUIHandler {
     @Override
     public void onUIRefreshComplete(PtrFrameLayout frame) {
         LogUtils.d("onUIRefreshComplete()...");
-        reset();
     }
 
     @Override
@@ -88,20 +89,21 @@ public class PullDownRefreshHeader extends FrameLayout implements PtrUIHandler {
         int lastPosY = ptrIndicator.getLastPosY();
 
         if (currentPosY < offsetToRefresh && lastPosY >= offsetToRefresh) {
-            if (isUnderTouch && status == PtrFrameLayout.PTR_STATUS_PREPARE) {
+            if (status == PtrFrameLayout.PTR_STATUS_PREPARE) {
                 mDescTv.setText(R.string.pull_down);
             }
         } else if (currentPosY > offsetToRefresh && lastPosY <= offsetToRefresh) {
-            if (isUnderTouch && status == PtrFrameLayout.PTR_STATUS_PREPARE) {
+            if (status == PtrFrameLayout.PTR_STATUS_PREPARE) {
                 mDescTv.setText(R.string.release_refresh_txt);
             }
         }
 
-        if (isUnderTouch && status == PtrFrameLayout.PTR_STATUS_LOADING) {
-            if (mAnim != null && !mAnim.isRunning()) {
+        if (status == PtrFrameLayout.PTR_STATUS_LOADING) {
+            if (mAnim != null) {
+                mAnim.setOneShot(false);
                 mAnim.start();
-                mDescTv.setText(R.string.loading_text);
             }
+            mDescTv.setText(R.string.loading_text);
         }
     }
 
