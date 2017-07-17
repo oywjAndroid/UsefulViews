@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Android on 2017/7/13.
  * FinancialPresenter 作为处理Message的presenter层。
  */
-public class FinancialPresenter extends Presenter<FinancialFragment.MessageUiProxy> {
+public class FinancialPresenter extends Presenter<FinancialFragment.FinancialUiProxy> {
 
     public static final String TAG = "FinancialPresenter";
 

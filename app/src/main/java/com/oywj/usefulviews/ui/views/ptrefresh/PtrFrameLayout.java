@@ -8,12 +8,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.oywj.usefulviews.R;
 import com.oywj.usefulviews.ui.views.ptrefresh.indicator.PtrIndicator;
 import com.oywj.usefulviews.ui.views.ptrefresh.tools.PtrCLog;
+import com.oywj.usefulviews.utils.LogUtils;
 
 
 /**
@@ -320,12 +322,14 @@ public class PtrFrameLayout extends ViewGroup {
                 mPtrIndicator.onMove(e.getX(), e.getY());
                 float offsetX = mPtrIndicator.getOffsetX();
                 float offsetY = mPtrIndicator.getOffsetY();
-
-                if (mDisableWhenHorizontalMove && !mPreventForHorizontal && (Math.abs(offsetX) > mPagingTouchSlop && Math.abs(offsetX) > Math.abs(offsetY))) {
+                if (mDisableWhenHorizontalMove
+                        && !mPreventForHorizontal
+                        && Math.abs(offsetX) > Math.abs(offsetY)) {
                     if (mPtrIndicator.isInStartPosition()) {
                         mPreventForHorizontal = true;
                     }
                 }
+
                 if (mPreventForHorizontal) {
                     return dispatchTouchEventSupper(e);
                 }
@@ -973,7 +977,7 @@ public class PtrFrameLayout extends ViewGroup {
         private int mTo;
 
         public ScrollChecker() {
-            mScroller = new Scroller(getContext());
+            mScroller = new Scroller(getContext(), new DecelerateInterpolator());
         }
 
         public void run() {
@@ -1031,6 +1035,7 @@ public class PtrFrameLayout extends ViewGroup {
             if (mPtrIndicator.isAlreadyHere(to)) {
                 return;
             }
+
             mStart = mPtrIndicator.getCurrentPosY();
             mTo = to;
             int distance = to - mStart;

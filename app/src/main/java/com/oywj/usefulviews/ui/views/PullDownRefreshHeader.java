@@ -3,6 +3,7 @@ package com.oywj.usefulviews.ui.views;
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,24 +57,15 @@ public class PullDownRefreshHeader extends FrameLayout implements PtrUIHandler {
         reset();
     }
 
-    private void reset() {
-        if (mAnim != null) {
-            mAnim.setOneShot(true);
-            mAnim.stop();
-        }
-        mDescTv.setText(R.string.pull_down);
-    }
-
     @Override
     public void onUIRefreshPrepare(PtrFrameLayout frame) {
-        LogUtils.d("onUIRefreshPrepare()...");
         reset();
+        LogUtils.d("onUIRefreshPrepare()...");
     }
 
     @Override
     public void onUIRefreshBegin(PtrFrameLayout frame) {
-        LogUtils.d("onUIRefreshBegin()...");
-        if (mAnim == null) mAnim = (AnimationDrawable) mAnimImg.getDrawable();
+        LogUtils.d("onUIRefreshBegin()");
     }
 
     @Override
@@ -99,12 +91,20 @@ public class PullDownRefreshHeader extends FrameLayout implements PtrUIHandler {
         }
 
         if (status == PtrFrameLayout.PTR_STATUS_LOADING) {
-            if (mAnim != null) {
-                mAnim.setOneShot(false);
-                mAnim.start();
+            if (mAnim == null) {
+                mAnim = (AnimationDrawable) ContextCompat.getDrawable(getContext(), R.drawable.pull_down_refresh_animation);
+                mAnimImg.setImageDrawable(mAnim);
             }
+            mAnim.start();
             mDescTv.setText(R.string.loading_text);
         }
+    }
+
+    private void reset() {
+        if (mAnim != null) {
+            mAnim.stop();
+        }
+        mDescTv.setText(R.string.pull_down);
     }
 
 }

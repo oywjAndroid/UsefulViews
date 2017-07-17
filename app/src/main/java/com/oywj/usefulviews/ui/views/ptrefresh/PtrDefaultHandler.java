@@ -1,5 +1,7 @@
 package com.oywj.usefulviews.ui.views.ptrefresh;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AbsListView;
 
@@ -24,6 +26,15 @@ public abstract class PtrDefaultHandler implements PtrHandler {
         }
     }
 
+    private static boolean canRecyclerScrollUp(View view) {
+        RecyclerView mRecycler = (RecyclerView) view;
+        RecyclerView.LayoutManager layoutManager = mRecycler.getLayoutManager();
+        if (layoutManager instanceof LinearLayoutManager) {
+
+        }
+        return false;
+    }
+
     /**
      * Default implement for check can perform pull to refresh
      *
@@ -33,8 +44,12 @@ public abstract class PtrDefaultHandler implements PtrHandler {
      * @return
      */
     public static boolean checkContentCanBePulledDown(PtrFrameLayout frame, View content, View header) {
+        if (content instanceof RecyclerView) {
+            return !canRecyclerScrollUp(content);
+        }
         return !canChildScrollUp(content);
     }
+
 
     @Override
     public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {

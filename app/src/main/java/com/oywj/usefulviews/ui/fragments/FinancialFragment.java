@@ -2,21 +2,33 @@ package com.oywj.usefulviews.ui.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.widget.ImageView;
 
 import com.oywj.usefulviews.R;
+import com.oywj.usefulviews.data.bean.FinancialData;
 import com.oywj.usefulviews.presenter.subs.FinancialPresenter;
+import com.oywj.usefulviews.ui.adapter.FinancialAdapter;
 import com.oywj.usefulviews.ui.basic.BasicFragment;
 import com.oywj.usefulviews.ui.basic.UiProxy;
 import com.oywj.usefulviews.ui.views.PullDownRefreshView;
 import com.oywj.usefulviews.ui.views.ptrefresh.PtrDefaultHandler;
 import com.oywj.usefulviews.ui.views.ptrefresh.PtrFrameLayout;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import butterknife.BindView;
 
+/**
+ * 理财页面
+ */
 public class FinancialFragment extends BasicFragment<FinancialPresenter> {
 
     @BindView(R.id.tool_bar)
@@ -44,13 +56,39 @@ public class FinancialFragment extends BasicFragment<FinancialPresenter> {
     @Override
     protected void onObtainPresenter() {
         mPresenter = new FinancialPresenter();
-        mPresenter.setUiProxy(new MessageUiProxy());
+        mPresenter.setUiProxy(new FinancialUiProxy());
     }
 
     @Override
     protected void onBindDataToViews() {
         setSwipeBackEnable(false);
-        initToolbar();
+        activeToolbar();
+        activeRefreshView();
+        activeRecyclerView();
+    }
+
+    private void activeRecyclerView() {
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        List<FinancialData> dataList = generateData();
+        FinancialAdapter adapter = new FinancialAdapter(dataList);
+        mRecyclerView.setAdapter(adapter);
+    }
+
+    private List<FinancialData> generateData() {
+        List<FinancialData> dataList = new ArrayList<>();
+        FinancialData data1 = new FinancialData();
+        data1.type = 0;
+        data1.banners = Arrays.asList(
+                "https://nfd-filestore-public.oss-cn-shenzhen.aliyuncs.com//3/2017/7/17/131581.png",
+                "http://img5.imgtn.bdimg.com/it/u=3639664762,1380171059&fm=23&gp=0.jpg",
+                "http://img0.imgtn.bdimg.com/it/u=1095909580,3513610062&fm=23&gp=0.jpg",
+                "http://img5.imgtn.bdimg.com/it/u=2583054979,2860372508&fm=23&gp=0.jpg");
+        dataList.add(data1);
+        return dataList;
+    }
+
+    private void activeRefreshView() {
+        mPullDownRefreshView.disableWhenHorizontalMove(true);
         mPullDownRefreshView.setPtrHandler(new PtrDefaultHandler() {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
@@ -62,10 +100,9 @@ public class FinancialFragment extends BasicFragment<FinancialPresenter> {
                 }, 2000);
             }
         });
-        //mPresenter.getTechList();
     }
 
-    private void initToolbar() {
+    private void activeToolbar() {
         ImageView titleImg = new ImageView(getActivity());
         Toolbar.LayoutParams params = new Toolbar.LayoutParams(
                 Toolbar.LayoutParams.WRAP_CONTENT,
@@ -77,7 +114,7 @@ public class FinancialFragment extends BasicFragment<FinancialPresenter> {
         mToolbar.addView(titleImg);
     }
 
-    public class MessageUiProxy implements UiProxy {
+    public class FinancialUiProxy implements UiProxy {
 
         @Override
         public Context getProxyContext() {

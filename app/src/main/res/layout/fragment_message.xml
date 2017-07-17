@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
         refresh:ptr_duration_to_close="200"
-        refresh:ptr_duration_to_close_header="1000"
+        refresh:ptr_duration_to_close_header="500"
         refresh:ptr_keep_header_when_refresh="true"
         refresh:ptr_pull_to_fresh="false"
         refresh:ptr_ratio_of_header_height_to_refresh="1.2"

@@ -11,7 +11,7 @@
         android:layout_width="@dimen/pull_down_anim_view_size"
         android:layout_height="@dimen/pull_down_anim_view_size"
         android:layout_margin="@dimen/pull_down_refresh_desc_margin"
-        android:src="@drawable/pull_down_refresh_animation"
+        android:src="@mipmap/loading_windmill_1"
         tools:ignore="ContentDescription" />
 
     <LinearLayout
