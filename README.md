@@ -1,4 +1,4 @@
-<a href="http://www.runoob.com/git/git-basic-operations.html">Git--菜鸟教程</a>
+* <a href="http://www.runoob.com/git/git-basic-operations.html">Git--菜鸟教程</a>
 ---
 
 # UsefulViews
