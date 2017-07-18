@@ -1,3 +1,6 @@
+<a href="http://www.runoob.com/git/git-basic-operations.html">Git--菜鸟教程</a>
+---
+
 # UsefulViews
 ### Introduction：
 
@@ -16,6 +19,8 @@
    > 3.ShapeImageView主要处理的是展示不同形状的头像，支持圆形、圆角矩形、椭圆形头像，同时可以为头像设置不同颜色的边框。
 
    > 4.使用RxJava、Retrofit封装了网络请求框架，支持配置Https请求。
+   
+   > 5.封装了下拉刷新控件，以及Banner图（支持自动轮播、触摸停止轮播以及松手开始轮播、无限循环、配置Banner标识）。
 
 
 ### Reference Library：
@@ -25,3 +30,5 @@
    * <a href="https://github.com/square/retrofit">Retrofit</a> 
    * <a href="https://github.com/bumptech/glide">Glide</a> 
    * <a href="https://github.com/YoKeyword/Fragmentation">Fragmentation</a> 
+   * <a href="https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh">android-Ultra-Pull-To-Refresh
+</a> 
