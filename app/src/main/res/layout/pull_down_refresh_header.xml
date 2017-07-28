@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/bottom_bar_height"
+    android:layout_height="@dimen/refresh_header_height"
     android:gravity="center"
     tools:ignore="RtlHardcoded">
 
@@ -36,6 +36,5 @@
             android:textSize="@dimen/desc_tv_size" />
 
     </LinearLayout>
-
 
 </RelativeLayout>

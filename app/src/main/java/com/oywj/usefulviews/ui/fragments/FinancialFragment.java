@@ -18,10 +18,6 @@ import com.oywj.usefulviews.ui.views.PullDownRefreshView;
 import com.oywj.usefulviews.ui.views.ptrefresh.PtrDefaultHandler;
 import com.oywj.usefulviews.ui.views.ptrefresh.PtrFrameLayout;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -69,22 +65,10 @@ public class FinancialFragment extends BasicFragment<FinancialPresenter> {
 
     private void activeRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<FinancialData> dataList = generateData();
+        // TODO 获取模拟数据
+        List<FinancialData> dataList = mPresenter.simulateData();
         FinancialAdapter adapter = new FinancialAdapter(dataList);
         mRecyclerView.setAdapter(adapter);
-    }
-
-    private List<FinancialData> generateData() {
-        List<FinancialData> dataList = new ArrayList<>();
-        FinancialData data1 = new FinancialData();
-        data1.type = 0;
-        data1.banners = Arrays.asList(
-                "https://nfd-filestore-public.oss-cn-shenzhen.aliyuncs.com//3/2017/7/17/131581.png",
-                "http://img5.imgtn.bdimg.com/it/u=3639664762,1380171059&fm=23&gp=0.jpg",
-                "http://img0.imgtn.bdimg.com/it/u=1095909580,3513610062&fm=23&gp=0.jpg",
-                "http://img5.imgtn.bdimg.com/it/u=2583054979,2860372508&fm=23&gp=0.jpg");
-        dataList.add(data1);
-        return dataList;
     }
 
     private void activeRefreshView() {
@@ -97,7 +81,7 @@ public class FinancialFragment extends BasicFragment<FinancialPresenter> {
                     public void run() {
                         mPullDownRefreshView.refreshComplete();
                     }
-                }, 2000);
+                }, 2500);
             }
         });
     }
@@ -105,8 +89,8 @@ public class FinancialFragment extends BasicFragment<FinancialPresenter> {
     private void activeToolbar() {
         ImageView titleImg = new ImageView(getActivity());
         Toolbar.LayoutParams params = new Toolbar.LayoutParams(
-                Toolbar.LayoutParams.WRAP_CONTENT,
-                Toolbar.LayoutParams.WRAP_CONTENT
+                getResources().getDimensionPixelOffset(R.dimen.bottom_bar_title_size),
+                getResources().getDimensionPixelOffset(R.dimen.bottom_bar_title_size)
         );
         params.gravity = Gravity.CENTER;
         titleImg.setImageResource(R.mipmap.title_logo);

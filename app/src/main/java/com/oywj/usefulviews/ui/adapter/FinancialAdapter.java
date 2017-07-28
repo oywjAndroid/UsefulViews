@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.oywj.usefulviews.R;
+import com.oywj.usefulviews.autolayout.utils.AutoUtils;
 import com.oywj.usefulviews.data.bean.FinancialData;
 import com.oywj.usefulviews.ui.basic.BasicApplication;
 import com.oywj.usefulviews.ui.views.BannerLayout;
+import com.oywj.usefulviews.ui.views.FinancialProgressView;
 
 import java.util.List;
 
@@ -76,7 +78,13 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     }
 
     private void handleUserProcess(ViewHolderProcess holder, int position) {
-        //TODO
+        FinancialProgressView.FinancialProgressData data1 = new FinancialProgressView.FinancialProgressData();
+        data1.setFinancialReward("50元红包");
+        data1.setManipulate("已注册");
+        data1.setManipulateDesc("注册拿奖励");
+        FinancialProgressView.FinancialProgressData data2 = new FinancialProgressView.FinancialProgressData();
+        FinancialProgressView.FinancialProgressData data3 = new FinancialProgressView.FinancialProgressData();
+        holder.mFinancialProgress.addFinancialProgressData();
     }
 
     // 处理Banner视图
@@ -85,7 +93,7 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
         holder.mBannerLayout.setOnBannerItemClickListener(new BannerLayout.OnBannerItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(BasicApplication.getInstance(), position+"", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BasicApplication.getInstance(), position + "", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -101,7 +109,7 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     }
 
 
-    public static abstract class ViewHolder extends RecyclerView.ViewHolder {
+    public static abstract class ViewHolder extends AutoLayoutViewHolder {
         // 广告牌
         public static final int VIEW_HOLDER_BILLBOARD = 0;
         // 用户理财进展
@@ -163,8 +171,12 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     // 用户理财进展
     public static class ViewHolderProcess extends ViewHolder {
 
+        @BindView(R.id.financial_progress)
+        FinancialProgressView mFinancialProgress;
+
         public ViewHolderProcess(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         public static ViewHolderProcess create(ViewGroup parent) {

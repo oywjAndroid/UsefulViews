@@ -125,33 +125,33 @@ public class BannerLayout extends RelativeLayout {
 
     private void init(AttributeSet attrs, int defStyle) {
 
-        TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.BannerLayoutStyle, defStyle, 0);
-        selectedIndicatorColor = array.getColor(R.styleable.BannerLayoutStyle_selectedIndicatorColor, selectedIndicatorColor);
-        unSelectedIndicatorColor = array.getColor(R.styleable.BannerLayoutStyle_unSelectedIndicatorColor, unSelectedIndicatorColor);
+        TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.BannerLayout, defStyle, 0);
+        selectedIndicatorColor = array.getColor(R.styleable.BannerLayout_selectedIndicatorColor, selectedIndicatorColor);
+        unSelectedIndicatorColor = array.getColor(R.styleable.BannerLayout_unSelectedIndicatorColor, unSelectedIndicatorColor);
 
-        int shape = array.getInt(R.styleable.BannerLayoutStyle_indicatorShape, Shape.oval.ordinal());
+        int shape = array.getInt(R.styleable.BannerLayout_indicatorShape, Shape.oval.ordinal());
         for (Shape shape1 : Shape.values()) {
             if (shape1.ordinal() == shape) {
                 indicatorShape = shape1;
                 break;
             }
         }
-        selectedIndicatorHeight = (int) array.getDimension(R.styleable.BannerLayoutStyle_selectedIndicatorHeight, selectedIndicatorHeight);
-        selectedIndicatorWidth = (int) array.getDimension(R.styleable.BannerLayoutStyle_selectedIndicatorWidth, selectedIndicatorWidth);
-        unSelectedIndicatorHeight = (int) array.getDimension(R.styleable.BannerLayoutStyle_unSelectedIndicatorHeight, unSelectedIndicatorHeight);
-        unSelectedIndicatorWidth = (int) array.getDimension(R.styleable.BannerLayoutStyle_unSelectedIndicatorWidth, unSelectedIndicatorWidth);
+        selectedIndicatorHeight = (int) array.getDimension(R.styleable.BannerLayout_selectedIndicatorHeight, selectedIndicatorHeight);
+        selectedIndicatorWidth = (int) array.getDimension(R.styleable.BannerLayout_selectedIndicatorWidth, selectedIndicatorWidth);
+        unSelectedIndicatorHeight = (int) array.getDimension(R.styleable.BannerLayout_unSelectedIndicatorHeight, unSelectedIndicatorHeight);
+        unSelectedIndicatorWidth = (int) array.getDimension(R.styleable.BannerLayout_unSelectedIndicatorWidth, unSelectedIndicatorWidth);
 
-        int position = array.getInt(R.styleable.BannerLayoutStyle_indicatorPosition, Position.centerBottom.ordinal());
+        int position = array.getInt(R.styleable.BannerLayout_indicatorPosition, Position.centerBottom.ordinal());
         for (Position position1 : Position.values()) {
             if (position == position1.ordinal()) {
                 indicatorPosition = position1;
             }
         }
-        indicatorSpace = (int) array.getDimension(R.styleable.BannerLayoutStyle_indicatorSpace, indicatorSpace);
-        indicatorMargin = (int) array.getDimension(R.styleable.BannerLayoutStyle_indicatorMargin, indicatorMargin);
-        autoPlayDuration = array.getInt(R.styleable.BannerLayoutStyle_autoPlayDuration, autoPlayDuration);
-        scrollDuration = array.getInt(R.styleable.BannerLayoutStyle_scrollDuration, scrollDuration);
-        isAutoPlay = array.getBoolean(R.styleable.BannerLayoutStyle_isAutoPlay, isAutoPlay);
+        indicatorSpace = (int) array.getDimension(R.styleable.BannerLayout_indicatorSpace, indicatorSpace);
+        indicatorMargin = (int) array.getDimension(R.styleable.BannerLayout_indicatorMargin, indicatorMargin);
+        autoPlayDuration = array.getInt(R.styleable.BannerLayout_autoPlayDuration, autoPlayDuration);
+        scrollDuration = array.getInt(R.styleable.BannerLayout_scrollDuration, scrollDuration);
+        isAutoPlay = array.getBoolean(R.styleable.BannerLayout_isAutoPlay, isAutoPlay);
         array.recycle();
 
         //绘制未选中状态图形

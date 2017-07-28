@@ -1,6 +1,7 @@
 package com.oywj.usefulviews.presenter.subs;
 
 import com.oywj.usefulviews.data.api.MessageApi;
+import com.oywj.usefulviews.data.bean.FinancialData;
 import com.oywj.usefulviews.data.bean.GankItemBean;
 import com.oywj.usefulviews.data.http.HttpManager;
 import com.oywj.usefulviews.data.http.RxManager;
@@ -9,6 +10,8 @@ import com.oywj.usefulviews.presenter.Presenter;
 import com.oywj.usefulviews.ui.fragments.FinancialFragment;
 import com.oywj.usefulviews.utils.LogUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -76,6 +79,28 @@ public class FinancialPresenter extends Presenter<FinancialFragment.FinancialUiP
 //                    }
 //                }
 //        );
+    }
+
+
+    /**
+     * 模拟后台数据
+     *
+     * @return 模拟数据
+     */
+    public List<FinancialData> simulateData() {
+        List<FinancialData> dataList = new ArrayList<>();
+        FinancialData data1 = new FinancialData();
+        data1.type = 0;
+        data1.banners = Arrays.asList(
+                "https://nfd-filestore-public.oss-cn-shenzhen.aliyuncs.com//3/2017/7/17/131581.png",
+                "http://img5.imgtn.bdimg.com/it/u=3639664762,1380171059&fm=23&gp=0.jpg",
+                "http://img0.imgtn.bdimg.com/it/u=1095909580,3513610062&fm=23&gp=0.jpg",
+                "http://img5.imgtn.bdimg.com/it/u=2583054979,2860372508&fm=23&gp=0.jpg");
+        dataList.add(data1);
+        FinancialData data2 = new FinancialData();
+        data2.type = 1;
+        dataList.add(data2);
+        return dataList;
     }
 
 

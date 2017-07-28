@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
+import com.oywj.usefulviews.autolayout.config.AutoLayoutConfig;
 import com.squareup.leakcanary.LeakCanary;
 
 import java.util.HashSet;
@@ -33,6 +34,7 @@ public class BasicApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        AutoLayoutConfig.getInstance().useDeviceSize();
         initDebugLeakCanary();
         instance = this;
         //初始化屏幕宽高

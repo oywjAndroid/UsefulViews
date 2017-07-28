@@ -1,11 +1,10 @@
 package com.oywj.usefulviews.ui.basic;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
+import com.oywj.usefulviews.autolayout.AutoLayoutActivity;
 import com.oywj.usefulviews.presenter.Presenter;
-import com.oywj.usefulviews.ui.basic.swipeback.SwipeBackActivity;
 import com.oywj.usefulviews.utils.LogUtils;
 
 import butterknife.ButterKnife;
@@ -41,7 +40,7 @@ import butterknife.ButterKnife;
  * 5.{@link #onBindDataToViews()}:
  * 执行数据绑定的操作
  */
-public abstract class BasicActivity<T extends Presenter> extends SwipeBackActivity {
+public abstract class BasicActivity<T extends Presenter> extends AutoLayoutActivity {
 
     protected T mPresenter;
 

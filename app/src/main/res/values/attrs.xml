@@ -39,7 +39,7 @@
 
     </declare-styleable>
 
-    <declare-styleable name="BannerLayoutStyle">
+    <declare-styleable name="BannerLayout">
         <attr name="selectedIndicatorColor" format="color|reference" />
         <attr name="unSelectedIndicatorColor" format="color|reference" />
         <attr name="indicatorShape" format="enum">
@@ -66,6 +66,62 @@
         <attr name="indicatorMargin" format="dimension|reference" />
         <attr name="autoPlayDuration" format="integer|reference" />
         <attr name="scrollDuration" format="integer|reference" />
-        <attr name="isAutoPlay" format="boolean|reference"/>
+        <attr name="isAutoPlay" format="boolean|reference" />
     </declare-styleable>
+
+    <declare-styleable name="FinancialProgressView">
+        <attr name="minValue" format="float|reference" />
+        <attr name="maxValue" format="float|reference" />
+        <attr name="progress" format="float|reference" />
+        <attr name="textSize" format="dimension|reference" />
+
+    </declare-styleable>
+
+
+    <!-- autoLayout is ui adapter-->
+    <declare-styleable name="AutoLayout_Layout">
+
+        <attr name="layout_auto_baseWidth">
+            <flag name="width" value="1" />
+            <flag name="height" value="2" />
+            <flag name="textSize" value="4" />
+            <flag name="padding" value="8" />
+            <flag name="margin" value="16" />
+            <flag name="marginLeft" value="32" />
+            <flag name="marginTop" value="64" />
+            <flag name="marginRight" value="128" />
+            <flag name="marginBottom" value="256" />
+            <flag name="paddingLeft" value="512" />
+            <flag name="paddingTop" value="1024" />
+            <flag name="paddingRight" value="2048" />
+            <flag name="paddingBottom" value="4096" />
+        </attr>
+
+        <attr name="layout_auto_baseHeight">
+            <flag name="width" value="1" />
+            <flag name="height" value="2" />
+            <flag name="textSize" value="4" />
+            <flag name="padding" value="8" />
+            <flag name="margin" value="16" />
+            <flag name="marginLeft" value="32" />
+            <flag name="marginTop" value="64" />
+            <flag name="marginRight" value="128" />
+            <flag name="marginBottom" value="256" />
+            <flag name="paddingLeft" value="512" />
+            <flag name="paddingTop" value="1024" />
+            <flag name="paddingRight" value="2048" />
+            <flag name="paddingBottom" value="4096" />
+            <flag name="minWidth" value="8192" />
+            <flag name="maxWidth" value="16384" />
+            <flag name="minHeight" value="32768" />
+            <flag name="maxHeight" value="65536" />
+        </attr>
+
+    </declare-styleable>
+
+    <declare-styleable name="MetroLayout">
+        <attr name="metro_divider" format="dimension" />
+    </declare-styleable>
+    <!-- autoLayout is ui adapter-->
+
 </resources>

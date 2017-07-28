@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
+import com.oywj.usefulviews.ui.basic.BasicApplication;
+
 /**
  * Created by Administrator on 2016/2/25.
  * 项目名:ZCSTMarket
@@ -17,59 +19,54 @@ public class DensityUtils {
     /**
      * dp转px
      *
-     * @param context
      * @param dpVal
      * @return
      */
-    public static int dp2px(Context context, float dpVal) {
+    public static int dp2px(float dpVal) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                dpVal, context.getApplicationContext().getResources().getDisplayMetrics());
+                dpVal, BasicApplication.getInstance().getResources().getDisplayMetrics());
     }
 
     /**
      * sp转px
      *
-     * @param context
      * @param spVal
      * @retur
      */
-    public static int sp2px(Context context, float spVal) {
+    public static int sp2px(float spVal) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
-                spVal, context.getApplicationContext().getResources().getDisplayMetrics());
+                spVal, BasicApplication.getInstance().getApplicationContext().getResources().getDisplayMetrics());
     }
 
     /**
      * px转dp
      *
-     * @param context
      * @param pxVal
      * @return
      */
-    public static float px2dp(Context context, float pxVal) {
-        final float scale = context.getApplicationContext().getResources().getDisplayMetrics().density;
+    public static float px2dp(float pxVal) {
+        final float scale = BasicApplication.getInstance().getApplicationContext().getResources().getDisplayMetrics().density;
         return (pxVal / scale);
     }
 
     /**
      * px转sp
      *
-     * @param context
      * @param pxVal
      * @return
      */
-    public static float px2sp(Context context, float pxVal) {
-        return (pxVal / context.getApplicationContext().getResources().getDisplayMetrics().scaledDensity);
+    public static float px2sp(float pxVal) {
+        return (pxVal / BasicApplication.getInstance().getResources().getDisplayMetrics().scaledDensity);
     }
 
     /**
      * 获取屏幕的宽高
      *
-     * @param context
      * @return
      */
-    public static int[] getDisplaySize(Context context) {
+    public static int[] getDisplaySize() {
         int[] size = new int[2];
-        Resources resources = context.getApplicationContext().getResources();
+        Resources resources = BasicApplication.getInstance().getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
         size[0] = dm.widthPixels;
         size[1] = dm.heightPixels;
