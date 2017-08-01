@@ -22,6 +22,8 @@
    
    > 5.封装了下拉刷新控件，以及Banner图（支持自动轮播、触摸停止轮播以及松手开始轮播、无限循环、配置Banner标识）。
 
+   > 6.加入了屏幕适配代码，其屏幕适配思想来自与鸿洋大哥的增强版的百分比布局。
+
 
 ### Reference Library：
 
@@ -31,4 +33,5 @@
    * <a href="https://github.com/bumptech/glide">Glide</a> 
    * <a href="https://github.com/YoKeyword/Fragmentation">Fragmentation</a> 
    * <a href="https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh">android-Ultra-Pull-To-Refresh
+   * <a href="http://blog.csdn.net/lmj623565791/article/details/49990941">android-autolayout</a>
 </a> 
