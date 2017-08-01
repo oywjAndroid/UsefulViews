@@ -22,5 +22,5 @@
     <dimen name="refresh_desc_txt_size">30px</dimen>
     <dimen name="desc_tv_size">24px</dimen>
 
-    <dimen name="banner_layout_height">360px</dimen>
+    <dimen name="banner_layout_height">300px</dimen>
 </resources>

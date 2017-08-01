@@ -70,11 +70,12 @@
     </declare-styleable>
 
     <declare-styleable name="FinancialProgressView">
-        <attr name="minValue" format="float|reference" />
-        <attr name="maxValue" format="float|reference" />
-        <attr name="progress" format="float|reference" />
-        <attr name="textSize" format="dimension|reference" />
-
+        <attr name="selected" format="boolean" />
+        <attr name="locationType" format="enum">
+            <enum name="start" value="0" />
+            <enum name="middle" value="1" />
+            <enum name="end" value="2" />
+        </attr>
     </declare-styleable>
 
 

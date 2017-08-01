@@ -78,13 +78,7 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     }
 
     private void handleUserProcess(ViewHolderProcess holder, int position) {
-        FinancialProgressView.FinancialProgressData data1 = new FinancialProgressView.FinancialProgressData();
-        data1.setFinancialReward("50元红包");
-        data1.setManipulate("已注册");
-        data1.setManipulateDesc("注册拿奖励");
-        FinancialProgressView.FinancialProgressData data2 = new FinancialProgressView.FinancialProgressData();
-        FinancialProgressView.FinancialProgressData data3 = new FinancialProgressView.FinancialProgressData();
-        holder.mFinancialProgress.addFinancialProgressData();
+
     }
 
     // 处理Banner视图
