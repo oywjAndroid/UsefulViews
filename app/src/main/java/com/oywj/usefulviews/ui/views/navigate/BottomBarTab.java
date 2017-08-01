@@ -136,10 +136,9 @@ public class BottomBarTab extends FrameLayout {
      */
     public BottomBarTab setIconSize(int iconSize) {
         this.mIconSize = iconSize;
-        int size = dip2px(iconSize);
         ViewGroup.LayoutParams params = mIcon.getLayoutParams();
-        params.width = size;
-        params.height = size;
+        params.width = mIconSize;
+        params.height = mIconSize;
         mIcon.setLayoutParams(params);
         return this;
     }

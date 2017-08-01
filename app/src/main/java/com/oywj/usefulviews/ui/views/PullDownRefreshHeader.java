@@ -2,16 +2,18 @@ package com.oywj.usefulviews.ui.views;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.oywj.usefulviews.R;
+import com.oywj.usefulviews.autolayout.AutoLayoutInfo;
+import com.oywj.usefulviews.autolayout.utils.AutoLayoutHelper;
 import com.oywj.usefulviews.ui.views.ptrefresh.PtrFrameLayout;
 import com.oywj.usefulviews.ui.views.ptrefresh.PtrUIHandler;
 import com.oywj.usefulviews.ui.views.ptrefresh.indicator.PtrIndicator;
@@ -25,6 +27,8 @@ import butterknife.ButterKnife;
  * PullDownRefreshHeader为下拉刷新头部视图。
  */
 public class PullDownRefreshHeader extends FrameLayout implements PtrUIHandler {
+
+    private AutoLayoutHelper mAutoHelper = new AutoLayoutHelper(this);
 
     @BindView(R.id.pull_down_refresh_anim_img)
     ImageView mAnimImg;
@@ -105,6 +109,61 @@ public class PullDownRefreshHeader extends FrameLayout implements PtrUIHandler {
             mAnim.stop();
         }
         mDescTv.setText(R.string.pull_down);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        if (!isInEditMode()) {
+            mAutoHelper.adjustChildren();
+        }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
+    public LayoutParams generateLayoutParams(AttributeSet attrs) {
+        return new LayoutParams(getContext(), attrs);
+    }
+
+    public static class LayoutParams extends FrameLayout.LayoutParams
+            implements AutoLayoutHelper.AutoLayoutParams {
+        private AutoLayoutInfo mAutoLayoutInfo;
+
+        public LayoutParams(Context c, AttributeSet attrs) {
+            super(c, attrs);
+            mAutoLayoutInfo = AutoLayoutHelper.getAutoLayoutInfo(c, attrs);
+        }
+
+        public LayoutParams(int width, int height) {
+            super(width, height);
+        }
+
+        public LayoutParams(int width, int height, int gravity) {
+            super(width, height, gravity);
+        }
+
+        public LayoutParams(ViewGroup.LayoutParams source) {
+            super(source);
+        }
+
+        public LayoutParams(MarginLayoutParams source) {
+            super(source);
+        }
+
+        public LayoutParams(FrameLayout.LayoutParams source) {
+            super((MarginLayoutParams) source);
+            gravity = source.gravity;
+        }
+
+        public LayoutParams(LayoutParams source) {
+            this((FrameLayout.LayoutParams) source);
+            mAutoLayoutInfo = source.mAutoLayoutInfo;
+        }
+
+        @Override
+        public AutoLayoutInfo getAutoLayoutInfo() {
+            return mAutoLayoutInfo;
+        }
+
     }
 
 }

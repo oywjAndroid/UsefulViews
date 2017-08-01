@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.widget.ImageView;
 
 import com.oywj.usefulviews.R;
+import com.oywj.usefulviews.autolayout.utils.AutoUtils;
 import com.oywj.usefulviews.data.bean.FinancialData;
 import com.oywj.usefulviews.presenter.subs.FinancialPresenter;
 import com.oywj.usefulviews.ui.adapter.FinancialAdapter;
@@ -88,9 +89,15 @@ public class FinancialFragment extends BasicFragment<FinancialPresenter> {
 
     private void activeToolbar() {
         ImageView titleImg = new ImageView(getActivity());
+        int percentWidthSize = AutoUtils.getPercentWidthSize(
+                (int) getResources().getDimension(R.dimen.actionBarTitle_width)
+        );
+        int percentHeightSize = AutoUtils.getPercentHeightSize(
+                (int) getResources().getDimension(R.dimen.actionBarTitle_height)
+        );
         Toolbar.LayoutParams params = new Toolbar.LayoutParams(
-                getResources().getDimensionPixelOffset(R.dimen.bottom_bar_title_size),
-                getResources().getDimensionPixelOffset(R.dimen.bottom_bar_title_size)
+                percentWidthSize,
+                percentHeightSize
         );
         params.gravity = Gravity.CENTER;
         titleImg.setImageResource(R.mipmap.title_logo);

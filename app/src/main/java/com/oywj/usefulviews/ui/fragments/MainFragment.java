@@ -3,6 +3,7 @@ package com.oywj.usefulviews.ui.fragments;
 import android.os.Bundle;
 
 import com.oywj.usefulviews.R;
+import com.oywj.usefulviews.autolayout.utils.AutoUtils;
 import com.oywj.usefulviews.ui.basic.BasicFragment;
 import com.oywj.usefulviews.ui.basic.swipeback.SwipeBackFragment;
 import com.oywj.usefulviews.ui.views.navigate.BottomBar;
@@ -59,11 +60,13 @@ public class MainFragment extends BasicFragment {
     }
 
     private void activeViews() {
+        int size = (int) getResources().getDimension(R.dimen.bottom_bar_icon_size);
+        int iconSize = AutoUtils.getPercentWidthSize(size);
         mBottomBar
-                .addItem(new BottomBarTab(getActivity(), R.mipmap.icon_financial_normal, "").setIconSize(50))
-                .addItem(new BottomBarTab(getActivity(), R.mipmap.icon_find_normal, "").setIconSize(50))
-                .addItem(new BottomBarTab(getActivity(), R.mipmap.icon_account_normal, "").setIconSize(50))
-                .addItem(new BottomBarTab(getActivity(), R.mipmap.icon_safety_normal, "").setIconSize(50));
+                .addItem(new BottomBarTab(getActivity(), R.mipmap.icon_financial_normal, "").setIconSize(iconSize))
+                .addItem(new BottomBarTab(getActivity(), R.mipmap.icon_find_normal, "").setIconSize(iconSize))
+                .addItem(new BottomBarTab(getActivity(), R.mipmap.icon_account_normal, "").setIconSize(iconSize))
+                .addItem(new BottomBarTab(getActivity(), R.mipmap.icon_safety_normal, "").setIconSize(iconSize));
 
         mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override

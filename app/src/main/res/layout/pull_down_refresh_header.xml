@@ -10,13 +10,15 @@
         android:id="@+id/pull_down_refresh_anim_img"
         android:layout_width="@dimen/pull_down_anim_view_size"
         android:layout_height="@dimen/pull_down_anim_view_size"
-        android:layout_margin="@dimen/pull_down_refresh_desc_margin"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/pull_down_refresh_desc_margin"
         android:src="@mipmap/loading_windmill_1"
         tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@id/pull_down_refresh_anim_img"
         android:gravity="center"
         android:orientation="vertical">
@@ -32,6 +34,7 @@
             android:id="@+id/pull_down_desc_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pull_down_desc_margin_top"
             android:text="@string/pull_down"
             android:textSize="@dimen/desc_tv_size" />
 

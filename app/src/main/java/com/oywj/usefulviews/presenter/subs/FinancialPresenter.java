@@ -92,7 +92,6 @@ public class FinancialPresenter extends Presenter<FinancialFragment.FinancialUiP
         FinancialData data1 = new FinancialData();
         data1.type = 0;
         data1.banners = Arrays.asList(
-                "https://nfd-filestore-public.oss-cn-shenzhen.aliyuncs.com//3/2017/7/17/131581.png",
                 "http://img5.imgtn.bdimg.com/it/u=3639664762,1380171059&fm=23&gp=0.jpg",
                 "http://img0.imgtn.bdimg.com/it/u=1095909580,3513610062&fm=23&gp=0.jpg",
                 "http://img5.imgtn.bdimg.com/it/u=2583054979,2860372508&fm=23&gp=0.jpg");
