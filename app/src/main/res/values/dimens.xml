@@ -22,5 +22,13 @@
     <dimen name="refresh_desc_txt_size">30px</dimen>
     <dimen name="desc_tv_size">24px</dimen>
 
+    <!-- financial module-->
     <dimen name="banner_layout_height">300px</dimen>
+    <dimen name="user_process_view_height">150px</dimen>
+    <dimen name="financial_holderView_padding">20px</dimen>
+    <dimen name="financial_progress_margin">8px</dimen>
+    <dimen name="financial_reward_margin">5px</dimen>
+    <dimen name="financial_progress_desc_padding">8px</dimen>
+    <dimen name="financial_progress_textSize">22px</dimen>
+
 </resources>

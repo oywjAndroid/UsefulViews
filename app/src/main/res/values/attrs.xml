@@ -76,8 +76,9 @@
             <enum name="middle" value="1" />
             <enum name="end" value="2" />
         </attr>
+        <attr name="selectedColor" format="color" />
+        <attr name="unSelectedColor" format="color" />
     </declare-styleable>
-
 
     <!-- autoLayout is ui adapter-->
     <declare-styleable name="AutoLayout_Layout">

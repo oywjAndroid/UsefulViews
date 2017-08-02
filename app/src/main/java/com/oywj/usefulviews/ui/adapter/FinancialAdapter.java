@@ -7,11 +7,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.oywj.usefulviews.R;
-import com.oywj.usefulviews.autolayout.utils.AutoUtils;
 import com.oywj.usefulviews.data.bean.FinancialData;
 import com.oywj.usefulviews.ui.basic.BasicApplication;
 import com.oywj.usefulviews.ui.views.BannerLayout;
-import com.oywj.usefulviews.ui.views.FinancialProgressView;
+import com.oywj.usefulviews.ui.views.FinancialHolderView;
 
 import java.util.List;
 
@@ -77,8 +76,9 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
         //TODO
     }
 
+    // 处理用户投资进展
     private void handleUserProcess(ViewHolderProcess holder, int position) {
-
+        holder.financialHolderView.setFinancialStatus(FinancialHolderView.RECHARGE);
     }
 
     // 处理Banner视图
@@ -164,9 +164,8 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
 
     // 用户理财进展
     public static class ViewHolderProcess extends ViewHolder {
-
-        @BindView(R.id.financial_progress)
-        FinancialProgressView mFinancialProgress;
+        @BindView(R.id.financial_holder_view)
+        FinancialHolderView financialHolderView;
 
         public ViewHolderProcess(View itemView) {
             super(itemView);

@@ -3,7 +3,6 @@ package com.oywj.usefulviews.ui.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -29,10 +28,13 @@ public class FinancialProgressView extends View {
             LocationType.END
     };
     private final Paint mPaint;
+    private final int mSelectedColor;
+    private final int mUnSelectedColor;
 
     private LocationType mLocationType;
     private boolean mSelected;
-    private int mRadius = AutoUtils.getPercentWidthSizeBigger(3);
+    private int mRadius = AutoUtils.getPercentWidthSizeBigger(6);
+    private int mStrokeWidth = AutoUtils.getPercentWidthSizeBigger(2);
 
     public FinancialProgressView(Context context) {
         this(context, null);
@@ -47,6 +49,12 @@ public class FinancialProgressView extends View {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FinancialProgressView, defStyleAttr, 0);
         mSelected = a.getBoolean(R.styleable.FinancialProgressView_selected, false);
+        mSelectedColor = a.getColor(R.styleable.FinancialProgressView_selectedColor,
+                ContextCompat.getColor(getContext(), R.color.financial_process_selected_color)
+        );
+        mUnSelectedColor = a.getColor(R.styleable.FinancialProgressView_unSelectedColor,
+                ContextCompat.getColor(getContext(), R.color.financial_process_unSelected_color)
+        );
         final int index = a.getInt(R.styleable.FinancialProgressView_locationType, -1);
         if (index >= 0) {
             setLocationType(sLocationTypeArray[index]);
@@ -59,24 +67,63 @@ public class FinancialProgressView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        final int width = getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec);
-        final int height = getDefaultSize(mRadius * 2, heightMeasureSpec);
+        int width = getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec);
+        int height = getDefaultSize(mRadius * 2, heightMeasureSpec);
         setMeasuredDimension(width, height);
+    }
+
+    public void setSelected(boolean isSelected) {
+        if (mSelected != isSelected) {
+            mSelected = isSelected;
+            requestLayout();
+            invalidate();
+        }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        mPaint.setColor(mSelected ? ContextCompat.getColor(getContext(),R.color.financial_process_selected_color)
-                        : ContextCompat.getColor(getContext(),R.color.financial_process_unSelected_color)
-        );
+        mPaint.setColor(mSelected ? mSelectedColor : mUnSelectedColor);
+        mPaint.setStrokeWidth(mStrokeWidth);
 
-
+        switch (mLocationType) {
+            case START:
+                drawStart(canvas);
+                break;
+            case MIDDLE:
+                drawMiddle(canvas);
+                break;
+            case END:
+                drawEnd(canvas);
+                break;
+        }
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
+    private void drawEnd(Canvas canvas) {
+        final float cx = (getWidth() * 2f) / 3f;
+        final float cy = getHeight() / 2f;
+        canvas.drawCircle(cx, cy, mRadius, mPaint);
+        canvas.drawLine(0, cy, cx, cy, mPaint);
     }
+
+    private void drawMiddle(Canvas canvas) {
+        final float cx = getWidth() / 2f;
+        final float cy = getHeight() / 2f;
+        canvas.drawCircle(cx, cy, mRadius, mPaint);
+
+        final float stopX = getRight();
+        canvas.drawLine(0, cy, stopX, cy, mPaint);
+    }
+
+    private void drawStart(Canvas canvas) {
+        // draw circle on the 1/3 width.
+        final float cx = getWidth() / 3f;
+        final float cy = getHeight() / 2f;
+        canvas.drawCircle(cx, cy, mRadius, mPaint);
+
+        final float stopX = getRight();
+        canvas.drawLine(cx, cy, stopX, cy, mPaint);
+    }
+
 
     public void setLocationType(LocationType type) {
         if (type == null) {

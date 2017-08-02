@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#00000000</color>
     <color name="colorAccent">#FF4081</color>
     <color name="tab_unSelect">#c9c9c9</color>
-    <color name="financial_process_selected_color" ></color>
-    <color name="financial_process_unSelected_color" ></color>
+    <color name="financial_process_selected_color">#FF9933</color>
+    <color name="financial_process_unSelected_color">#C3C3C3</color>
 </resources>

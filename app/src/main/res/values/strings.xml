@@ -5,6 +5,21 @@
     <string name="pull_down">pull down to refresh</string>
     <string name="release_refresh_txt">release refresh...</string>
     <string name="loading_text">loading...</string>
+
+    <string name="register_reward">50元红包</string>
+    <string name="register_process_desc">注册拿奖励</string>
+    <string name="register_complete">已注册</string>
+
+    <string name="recharge_reward">100元红包</string>
+    <string name="recharge_process_desc">充值领红包</string>
+    <string name="recharge_complete">已充值</string>
+    <string name="recharge">充值</string>
+
+    <string name="invest_reward">150元红包+3%加息券</string>
+    <string name="invest_process_desc">投资拿奖励</string>
+    <string name="invest_complete">已投资</string>
+    <string name="invest">投资</string>
+
     <string-array name="list_items">
         <item>ShapeImageView</item>
     </string-array>
