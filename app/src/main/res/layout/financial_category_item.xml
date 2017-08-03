@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/financial_category_icon_margin"
+    tools:ignore="UseCompoundDrawables">
+
+    <ImageView
+        android:id="@+id/financial_category_icon"
+        android:layout_width="@dimen/financial_category_icon_size"
+        android:layout_height="@dimen/financial_category_icon_size"
+        android:layout_margin="@dimen/financial_category_icon_margin"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/financial_category_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/financial_category_icon_margin"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/financial_category_desc_textSize"
+        tools:ignore="RtlHardcoded" />
+
+    <ImageView
+        android:id="@+id/financial_category_question"
+        android:layout_width="@dimen/financial_category_icon_question_size"
+        android:layout_height="@dimen/financial_category_icon_question_size"
+        android:layout_margin="@dimen/financial_category_icon_margin"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/icon_tip_question_gray"
+        tools:ignore="ContentDescription" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/financial_category_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:clickable="true"
+            android:drawableRight="@mipmap/icon_arrow_right"
+            android:padding="@dimen/financial_category_more_padding"
+            android:text="@string/more"
+            android:textColor="@color/financial_category_more"
+            android:textSize="@dimen/financial_category_more_textSize"
+            tools:ignore="RtlHardcoded" />
+
+    </FrameLayout>
+
+
+</LinearLayout>

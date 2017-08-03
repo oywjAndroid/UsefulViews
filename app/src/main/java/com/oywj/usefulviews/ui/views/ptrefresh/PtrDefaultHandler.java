@@ -27,12 +27,11 @@ public abstract class PtrDefaultHandler implements PtrHandler {
     }
 
     private static boolean canRecyclerScrollUp(View view) {
-        RecyclerView mRecycler = (RecyclerView) view;
-        RecyclerView.LayoutManager layoutManager = mRecycler.getLayoutManager();
-        if (layoutManager instanceof LinearLayoutManager) {
-
-        }
-        return false;
+        final RecyclerView recyclerView = (RecyclerView) view;
+        RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
+        return manager instanceof LinearLayoutManager
+                && recyclerView.getChildCount() > 0
+                && (((LinearLayoutManager) manager).findFirstVisibleItemPosition() > 0 || recyclerView.getChildAt(0).getTop() < recyclerView.getPaddingTop());
     }
 
     /**

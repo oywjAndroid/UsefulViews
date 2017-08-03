@@ -9,7 +9,7 @@
     <dimen name="actionBarTitle_height">50px</dimen>
 
     <!-- bottomBar Related-->
-    <dimen name="bottom_bar_height">110px</dimen>
+    <dimen name="bottom_bar_height">95px</dimen>
     <dimen name="bottom_bar_title_size">35px</dimen>
     <dimen name="bottom_bar_icon_size">100px</dimen>
 
@@ -25,10 +25,19 @@
     <!-- financial module-->
     <dimen name="banner_layout_height">300px</dimen>
     <dimen name="user_process_view_height">150px</dimen>
-    <dimen name="financial_holderView_padding">20px</dimen>
+    <dimen name="financial_holderView_padding">16px</dimen>
     <dimen name="financial_progress_margin">8px</dimen>
     <dimen name="financial_reward_margin">5px</dimen>
     <dimen name="financial_progress_desc_padding">8px</dimen>
     <dimen name="financial_progress_textSize">22px</dimen>
+    <dimen name="financial_category_icon_size">45px</dimen>
+    <dimen name="financial_category_icon_question_size">30px</dimen>
+    <dimen name="financial_category_icon_margin">10px</dimen>
+    <dimen name="divider_line_height">23px</dimen>
+    <dimen name="financial_category_desc_textSize">30px</dimen>
+    <dimen name="financial_category_more_padding">10px</dimen>
+    <dimen name="financial_category_more_textSize">26px</dimen>
+    <dimen name="lines_size">2px</dimen>
+    <dimen name="lines_margin">25px</dimen>
 
 </resources>

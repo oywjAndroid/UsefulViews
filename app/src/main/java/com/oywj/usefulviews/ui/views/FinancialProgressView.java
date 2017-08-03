@@ -33,8 +33,8 @@ public class FinancialProgressView extends View {
 
     private LocationType mLocationType;
     private boolean mSelected;
-    private int mRadius = AutoUtils.getPercentWidthSizeBigger(6);
-    private int mStrokeWidth = AutoUtils.getPercentWidthSizeBigger(2);
+    private int mRadius = AutoUtils.getPercentWidthSize(6);
+    private int mStrokeWidth = AutoUtils.getPercentWidthSize(3);
 
     public FinancialProgressView(Context context) {
         this(context, null);

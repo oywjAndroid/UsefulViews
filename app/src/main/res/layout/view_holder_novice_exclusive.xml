@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/divided_line" />
+
+    <com.oywj.usefulviews.ui.views.financial.FinancialCategoryView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:categoryDrawable="@mipmap/icon_newbie_region"
+        app:categoryText="@string/newbie_category"
+        app:showMore="true"
+        app:showQuestion="true" />
+
+    <include
+        layout="@layout/divided_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lines_size"
+        android:layout_marginLeft="@dimen/lines_margin"
+        android:layout_marginRight="@dimen/lines_margin" />
+
 
 </LinearLayout>

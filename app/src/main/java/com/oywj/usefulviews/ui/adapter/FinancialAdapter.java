@@ -43,11 +43,11 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
             case ViewHolder.VIEW_HOLDER_USER_PROCESS:
                 handleUserProcess((ViewHolderProcess) holder, position);
                 break;
-            case ViewHolder.VIEW_HOLDER_COIN_PURSE:
-                handleCoinPurse((ViewHolderCoinPurse) holder, position);
-                break;
             case ViewHolder.VIEW_HOLDER_NOVICE_EXCLUSIVE:
                 handleNoviceExclusive((ViewHolderNoviceExclusive) holder, position);
+                break;
+            case ViewHolder.VIEW_HOLDER_COIN_PURSE:
+                handleCoinPurse((ViewHolderCoinPurse) holder, position);
                 break;
             case ViewHolder.VIEW_HOLDER_REGULAR_FINANCIAL:
                 handleRegularFinancial((ViewHolderRegularFinancial) holder, position);
@@ -68,11 +68,13 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
         //TODO
     }
 
-    private void handleNoviceExclusive(ViewHolderNoviceExclusive holder, int position) {
+
+    private void handleCoinPurse(ViewHolderCoinPurse holder, int position) {
         //TODO
     }
 
-    private void handleCoinPurse(ViewHolderCoinPurse holder, int position) {
+    // 新手专享
+    private void handleNoviceExclusive(ViewHolderNoviceExclusive holder, int position) {
         //TODO
     }
 

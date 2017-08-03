@@ -96,9 +96,14 @@ public class FinancialPresenter extends Presenter<FinancialFragment.FinancialUiP
                 "http://img0.imgtn.bdimg.com/it/u=1095909580,3513610062&fm=23&gp=0.jpg",
                 "http://img5.imgtn.bdimg.com/it/u=2583054979,2860372508&fm=23&gp=0.jpg");
         dataList.add(data1);
+
         FinancialData data2 = new FinancialData();
         data2.type = 1;
         dataList.add(data2);
+
+        FinancialData data3 = new FinancialData();
+        data3.type = 2;
+        dataList.add(data3);
         return dataList;
     }
 

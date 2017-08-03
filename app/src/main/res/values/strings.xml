@@ -20,6 +20,8 @@
     <string name="invest_complete">已投资</string>
     <string name="invest">投资</string>
 
+    <string name="more">更多</string>
+    <string name="newbie_category">新手专享高息 • 限时特供</string>
     <string-array name="list_items">
         <item>ShapeImageView</item>
     </string-array>

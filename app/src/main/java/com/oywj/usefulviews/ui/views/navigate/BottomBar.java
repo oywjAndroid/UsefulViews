@@ -4,8 +4,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -13,13 +15,15 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 
+import com.oywj.usefulviews.R;
+import com.oywj.usefulviews.autolayout.utils.AutoUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
  * Created by YoKeyword on 16/6/3.
- *
  */
 public class BottomBar extends LinearLayout {
     private static final int TRANSLATE_DURATION_MILLIS = 200;
@@ -50,6 +54,15 @@ public class BottomBar extends LinearLayout {
 
     private void init(Context context) {
         setOrientation(VERTICAL);
+        setBackgroundColor(ContextCompat.getColor(getContext(), R.color.bottom_bar_bg_color));
+
+        // add divider line.
+        View lines = LayoutInflater.from(context).inflate(R.layout.divided_line, this, false);
+        ViewGroup.LayoutParams params = lines.getLayoutParams();
+        params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        params.height = AutoUtils.getPercentHeightSize(getResources().getDimensionPixelSize(R.dimen.lines_size));
+        lines.setLayoutParams(params);
+        addView(lines);
 
         mTabLayout = new LinearLayout(context);
         mTabLayout.setBackgroundColor(Color.WHITE);

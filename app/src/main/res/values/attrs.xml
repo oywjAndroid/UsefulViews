@@ -126,4 +126,11 @@
     </declare-styleable>
     <!-- autoLayout is ui adapter-->
 
+    <declare-styleable name="FinancialCategoryView">
+        <attr name="categoryDrawable" format="reference" />
+        <attr name="categoryText" format="string" />
+        <attr name="showQuestion" format="boolean" />
+        <attr name="showMore" format="boolean" />
+    </declare-styleable>
+
 </resources>
