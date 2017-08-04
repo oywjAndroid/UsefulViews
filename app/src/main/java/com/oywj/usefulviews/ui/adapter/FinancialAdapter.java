@@ -11,6 +11,8 @@ import com.oywj.usefulviews.data.bean.FinancialData;
 import com.oywj.usefulviews.ui.basic.BasicApplication;
 import com.oywj.usefulviews.ui.views.BannerLayout;
 import com.oywj.usefulviews.ui.views.FinancialHolderView;
+import com.oywj.usefulviews.ui.views.discrete.DiscreteScrollView;
+import com.oywj.usefulviews.ui.views.financial.FinancialCategoryView;
 
 import java.util.List;
 
@@ -187,8 +189,14 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     // 新手专享
     public static class ViewHolderNoviceExclusive extends ViewHolder {
 
+        @BindView(R.id.category_newbie)
+        FinancialCategoryView newBieCategory;
+        @BindView(R.id.discrete_scroll)
+        DiscreteScrollView discreteScrollView;
+
         public ViewHolderNoviceExclusive(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         public static ViewHolderNoviceExclusive create(ViewGroup parent) {

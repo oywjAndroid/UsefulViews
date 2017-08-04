@@ -37,7 +37,7 @@
     <dimen name="financial_category_desc_textSize">30px</dimen>
     <dimen name="financial_category_more_padding">10px</dimen>
     <dimen name="financial_category_more_textSize">26px</dimen>
-    <dimen name="lines_size">2px</dimen>
+    <dimen name="lines_size">1.5px</dimen>
     <dimen name="lines_margin">25px</dimen>
 
 </resources>

@@ -9,6 +9,7 @@
     <include layout="@layout/divided_line" />
 
     <com.oywj.usefulviews.ui.views.financial.FinancialCategoryView
+        android:id="@+id/category_newbie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:categoryDrawable="@mipmap/icon_newbie_region"
@@ -22,6 +23,12 @@
         android:layout_height="@dimen/lines_size"
         android:layout_marginLeft="@dimen/lines_margin"
         android:layout_marginRight="@dimen/lines_margin" />
+
+
+    <com.oywj.usefulviews.ui.views.discrete.DiscreteScrollView
+        android:id="@+id/discrete_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>
