@@ -1,4 +1,5 @@
 * <a href="http://www.runoob.com/git/git-basic-operations.html">Git--菜鸟教程</a>
+* <a href="http://blog.csdn.net/qq_23012315/article/details/50807224">RecyclerView源码剖析</a>
 ---
 
 # UsefulViews
