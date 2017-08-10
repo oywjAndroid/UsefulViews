@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.oywj.usefulviews.ui.views.financial.FinancialNewbieMarkView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/financial_newbie_margin"
+            android:background="@drawable/newbie_exclusive_bg"
+            android:padding="@dimen/financial_newbie_padding"
+            android:text="前7天专享"
+            android:textColor="@color/financial_process_selected_color"
+            android:textSize="@dimen/financial_newbie_textSize" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10.2"
+                android:textColor="@color/financial_process_selected_color"
+                android:textSize="@dimen/financial_newbie_interest_rate_textSize" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/financial_newbie_interest_rate_sign_margin_bottom"
+                android:background="@drawable/percent_sign"
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="历史年收益"
+            android:textSize="@dimen/financial_newbie_historical_annual_income" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/financial_newbie_historical_annual_income_margin_top"
+            android:background="@drawable/financial_desc_bg"
+            android:paddingBottom="@dimen/financial_newbie_historical_annual_income_padding_top_bottom"
+            android:paddingLeft="@dimen/financial_newbie_historical_annual_income_padding_left_right"
+            android:paddingRight="@dimen/financial_newbie_historical_annual_income_padding_left_right"
+            android:paddingTop="@dimen/financial_newbie_historical_annual_income_padding_top_bottom"
+            android:text="购买"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/financial_newbie_historical_annual_income_textSize" />
+
+    </LinearLayout>
+</merge>
+
+

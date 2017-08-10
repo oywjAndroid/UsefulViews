@@ -21,7 +21,7 @@ import butterknife.OnClick;
  * Created by Android on 2017/8/3.
  * 理财分类项目
  */
-public class FinancialCategoryView extends AutoLinearLayout {
+public class FinancialCategoryLayout extends AutoLinearLayout {
 
     @BindView(R.id.financial_category_icon)
     ImageView mCategoryIcon;
@@ -39,21 +39,21 @@ public class FinancialCategoryView extends AutoLinearLayout {
 
     private OnClickQuestionAndMoreListener mListener;
 
-    public FinancialCategoryView(Context context) {
+    public FinancialCategoryLayout(Context context) {
         this(context, null);
     }
 
-    public FinancialCategoryView(Context context, AttributeSet attrs) {
+    public FinancialCategoryLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public FinancialCategoryView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FinancialCategoryLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FinancialCategoryView, defStyleAttr, 0);
-        mCategoryDrawable = a.getDrawable(R.styleable.FinancialCategoryView_categoryDrawable);
-        mCategoryText = a.getString(R.styleable.FinancialCategoryView_categoryText);
-        mShowQuestion = a.getBoolean(R.styleable.FinancialCategoryView_showQuestion, false);
-        mShowMore = a.getBoolean(R.styleable.FinancialCategoryView_showMore, false);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FinancialCategoryLayout, defStyleAttr, 0);
+        mCategoryDrawable = a.getDrawable(R.styleable.FinancialCategoryLayout_categoryDrawable);
+        mCategoryText = a.getString(R.styleable.FinancialCategoryLayout_categoryText);
+        mShowQuestion = a.getBoolean(R.styleable.FinancialCategoryLayout_showQuestion, false);
+        mShowMore = a.getBoolean(R.styleable.FinancialCategoryLayout_showMore, false);
         a.recycle();
     }
 

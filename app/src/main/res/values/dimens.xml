@@ -23,7 +23,7 @@
     <dimen name="desc_tv_size">24px</dimen>
 
     <!-- financial module-->
-    <dimen name="banner_layout_height">300px</dimen>
+    <dimen name="banner_layout_height">350px</dimen>
     <dimen name="user_process_view_height">150px</dimen>
     <dimen name="financial_holderView_padding">16px</dimen>
     <dimen name="financial_progress_margin">8px</dimen>
@@ -39,5 +39,15 @@
     <dimen name="financial_category_more_textSize">26px</dimen>
     <dimen name="lines_size">1.5px</dimen>
     <dimen name="lines_margin">25px</dimen>
+    <dimen name="financial_newbie_padding">6px</dimen>
+    <dimen name="financial_newbie_textSize">24px</dimen>
+    <dimen name="financial_newbie_interest_rate_textSize">65px</dimen>
+    <dimen name="financial_newbie_interest_rate_sign_margin_bottom">10px</dimen>
+    <dimen name="financial_newbie_historical_annual_income">20px</dimen>
+    <dimen name="financial_newbie_historical_annual_income_padding_top_bottom">12px</dimen>
+    <dimen name="financial_newbie_historical_annual_income_padding_left_right">35px</dimen>
+    <dimen name="financial_newbie_historical_annual_income_margin_top">12px</dimen>
+    <dimen name="financial_newbie_historical_annual_income_textSize">25px</dimen>
+    <dimen name="financial_newbie_margin">15px</dimen>
 
 </resources>

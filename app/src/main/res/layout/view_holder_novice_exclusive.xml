@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
@@ -8,7 +9,7 @@
 
     <include layout="@layout/divided_line" />
 
-    <com.oywj.usefulviews.ui.views.financial.FinancialCategoryView
+    <com.oywj.usefulviews.ui.views.financial.FinancialCategoryLayout
         android:id="@+id/category_newbie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,10 +26,16 @@
         android:layout_marginRight="@dimen/lines_margin" />
 
 
-    <com.oywj.usefulviews.ui.views.discrete.DiscreteScrollView
+    <!--<com.oywj.usefulviews.ui.views.discrete.DiscreteScrollView
         android:id="@+id/discrete_scroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />-->
+
+    <com.oywj.usefulviews.ui.views.financial.NewbieCategoryLayout
+        android:layout_width="450px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="PxUsage" />
 
 
 </LinearLayout>
