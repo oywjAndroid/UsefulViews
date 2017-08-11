@@ -1,5 +1,6 @@
 package com.oywj.usefulviews.ui.views.drawable;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -18,11 +19,14 @@ import com.oywj.usefulviews.ui.basic.BasicApplication;
  */
 public class NewbieMarkDrawable extends Drawable {
 
+    private final int mStrokeSize;
+    private final RectF mRoundRect = new RectF();
     private Paint mPaint;
     private int mRoundRectRadius = AutoUtils.getPercentWidthSize(10);
-    private final RectF mRoundRect = new RectF();
+    private int drawBottomPadding = 0;
 
-    public NewbieMarkDrawable() {
+    public NewbieMarkDrawable(Context context) {
+        mStrokeSize = context.getResources().getDimensionPixelSize(R.dimen.newbie_markView_stroke_width);
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(ContextCompat.getColor(BasicApplication.getInstance(), R.color.financial_category_more));
@@ -30,33 +34,45 @@ public class NewbieMarkDrawable extends Drawable {
 
     @Override
     public void draw(Canvas canvas) {
+        final float dLeft = getBounds().left;
+        final float dTop = getBounds().top;
+        final float dRight = getBounds().right;
+        final float dBottom = getBounds().bottom - drawBottomPadding;
+        final float dWidth = dRight - dLeft;
+        final float dHeight = dBottom - dTop;
+
         // 1.draw the stroke.
-        mPaint.setStrokeWidth(1.5f);
-        mRoundRect.set(getBounds().left, getBounds().top, getBounds().right, getBounds().bottom);
+        mPaint.setStrokeWidth(mStrokeSize);
+        mRoundRect.set(
+                dLeft + mStrokeSize,
+                dTop + mStrokeSize,
+                dRight - mStrokeSize,
+                dBottom - mStrokeSize
+        );
         canvas.drawRoundRect(mRoundRect, mRoundRectRadius, mRoundRectRadius, mPaint);
 
         // 2.draw the content.
-        mPaint.setStrokeWidth(0.65f);
-        final float lineWidth = getBounds().width() * 0.1f;
+        mPaint.setStrokeWidth(mStrokeSize * 0.55f);
+        final float lineWidth = dWidth * 0.1f;
         final float leftDistance = lineWidth * 0.5f;
-        final float topDistance = getBounds().height() * 0.3f;
-        final float bottomDistance = getBounds().height() * 0.9f;
+        final float topDistance = dHeight * 0.3f;
+        final float bottomDistance = dHeight * 0.9f;
 
         // draw the line of upper left corner.
-        float startX1 = getBounds().left + leftDistance;
-        float startY1 = getBounds().top + topDistance;
+        float startX1 = dLeft + leftDistance;
+        float startY1 = dTop + topDistance;
         float stopX1 = startX1 + lineWidth;
         float stopY1 = startY1 * 0.5f;
         canvas.drawLine(startX1, startY1, stopX1, stopY1, mPaint);
 
         // draw the line of upper right corner.
-        float startX2 = getBounds().left + getBounds().width() - lineWidth;
-        float stopX2 = getBounds().left + getBounds().width();
+        float startX2 = dLeft + dWidth - lineWidth;
+        float stopX2 = dLeft + dWidth;
         canvas.drawLine(startX2, startY1, stopX2, stopY1, mPaint);
 
         // draw the line of bottom left corner.
-        float startY3 = getBounds().top + bottomDistance;
-        float stopY3 = getBounds().top + 1.92f * bottomDistance - getBounds().height();//(getBounds().height() - (getBounds().height() - bottomDistance) * 2f) ==> 2f*bottomDistance - getBounds().height()
+        float startY3 = dTop + bottomDistance;
+        float stopY3 = dTop + 1.92f * bottomDistance - dHeight;//(getBounds().height() - (getBounds().height() - bottomDistance) * 2f) ==> 2f*bottomDistance - getBounds().height()
         canvas.drawLine(startX1, startY3, stopX1, stopY3, mPaint);
 
         // draw the line of bottom right corner.
@@ -94,5 +110,9 @@ public class NewbieMarkDrawable extends Drawable {
     @Override
     public int getOpacity() {
         return 0;
+    }
+
+    public void setDrawBottomPadding(int drawBottomPadding) {
+        this.drawBottomPadding = drawBottomPadding;
     }
 }

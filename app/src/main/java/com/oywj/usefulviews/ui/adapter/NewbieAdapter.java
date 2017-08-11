@@ -1,15 +1,16 @@
 package com.oywj.usefulviews.ui.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.oywj.usefulviews.R;
+import com.oywj.usefulviews.ui.views.financial.NewbieCategoryLayout;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -29,7 +30,11 @@ public class NewbieAdapter extends RecyclerView.Adapter<NewbieAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(NewbieAdapter.ViewHolder holder, int position) {
+        holder.newbieLayout.setNewbiePercentIncome(mNewbieData.get(position));
 
+        if (position == 0) {
+            holder.newbieLayout.setNewbie7DayVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -38,6 +43,9 @@ public class NewbieAdapter extends RecyclerView.Adapter<NewbieAdapter.ViewHolder
     }
 
     public class ViewHolder extends AutoLayoutViewHolder {
+
+        @BindView(R.id.newbie_category_layout)
+        NewbieCategoryLayout newbieLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);

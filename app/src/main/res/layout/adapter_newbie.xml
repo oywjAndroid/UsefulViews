@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/newbie_adapter_width"
+    android:layout_height="@dimen/newbie_adapter_height">
+
+    <com.oywj.usefulviews.ui.views.financial.NewbieCategoryLayout
+        android:id="@+id/newbie_category_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/newbie_adapter_margin"
+       />
+
+</FrameLayout>
 
 
-
-</LinearLayout>

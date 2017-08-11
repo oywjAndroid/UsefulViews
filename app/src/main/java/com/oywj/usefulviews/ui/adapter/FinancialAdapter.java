@@ -11,7 +11,12 @@ import com.oywj.usefulviews.data.bean.FinancialData;
 import com.oywj.usefulviews.ui.basic.BasicApplication;
 import com.oywj.usefulviews.ui.views.BannerLayout;
 import com.oywj.usefulviews.ui.views.FinancialHolderView;
+import com.oywj.usefulviews.ui.views.discrete.DiscreteScrollView;
+import com.oywj.usefulviews.ui.views.discrete.InfiniteScrollAdapter;
+import com.oywj.usefulviews.ui.views.discrete.transform.ScaleTransformer;
+import com.oywj.usefulviews.ui.views.financial.FinancialCategoryLayout;
 
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -75,7 +80,14 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
 
     // 新手专享
     private void handleNoviceExclusive(ViewHolderNoviceExclusive holder, int position) {
-        //TODO
+
+        String[] strData = {"9.8", "10.2", "12.0"};
+        InfiniteScrollAdapter infiniteAdapter = InfiniteScrollAdapter.wrap(new NewbieAdapter(Arrays.asList(strData)));
+        holder.discreteScrollView.setAdapter(infiniteAdapter);
+//        holder.discreteScrollView.setItemTransitionTimeMillis(DiscreteScrollViewOptions.getTransitionTime());
+        holder.discreteScrollView.setItemTransformer(new ScaleTransformer.Builder()
+                .setMinScale(1f)
+                .build());
     }
 
     // 处理用户投资进展
@@ -187,10 +199,10 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     // 新手专享
     public static class ViewHolderNoviceExclusive extends ViewHolder {
 
-//        @BindView(R.id.category_newbie)
-//        FinancialCategoryView newBieCategory;
-//        @BindView(R.id.discrete_scroll)
-//        DiscreteScrollView discreteScrollView;
+        @BindView(R.id.category_newbie)
+        FinancialCategoryLayout newBieCategory;
+        @BindView(R.id.discrete_scroll)
+        DiscreteScrollView discreteScrollView;
 
         public ViewHolderNoviceExclusive(View itemView) {
             super(itemView);

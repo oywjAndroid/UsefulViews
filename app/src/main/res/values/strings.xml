@@ -22,6 +22,9 @@
 
     <string name="more">更多</string>
     <string name="newbie_category">新手专享高息 • 限时特供</string>
+    <string name="newbie_7day">前7天专享</string>
+    <string name="historical_annual_income">历史年收益</string>
+    <string name="buy">购买</string>
     <string-array name="list_items">
         <item>ShapeImageView</item>
     </string-array>
