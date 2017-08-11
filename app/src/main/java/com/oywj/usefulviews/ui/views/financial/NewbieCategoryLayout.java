@@ -108,6 +108,13 @@ public class NewbieCategoryLayout extends AutoFrameLayout {
                     mHistoryIncome.setPadding(0, 0, 0, bottomPadding);
                 }
             });
+        } else {
+            post(new Runnable() {
+                @Override
+                public void run() {
+                    mHistoryIncome.setPadding(0, 0, 0, 0);
+                }
+            });
         }
         mNewbie7day.setVisibility(visibility);
     }
