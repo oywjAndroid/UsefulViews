@@ -10,7 +10,7 @@
         android:id="@+id/banner_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/banner_layout_height"
-        app:autoPlayDuration="3000"
+        app:autoPlayDuration="8000"
         app:indicatorMargin="10dp"
         app:indicatorPosition="centerBottom"
         app:indicatorShape="oval"

@@ -4,16 +4,14 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.oywj.usefulviews.R;
 import com.oywj.usefulviews.autolayout.AutoFrameLayout;
 import com.oywj.usefulviews.ui.views.drawable.NewbieMarkDrawable;
-import com.oywj.usefulviews.utils.LogUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -99,12 +97,15 @@ public class NewbieCategoryLayout extends AutoFrameLayout {
      * @param visibility
      */
     public void setNewbie7DayVisibility(int visibility) {
+        if (visibility == INVISIBLE) {
+            visibility = GONE;
+        }
+
         if (visibility == GONE) {
             post(new Runnable() {
                 @Override
                 public void run() {
                     final int bottomPadding = (int) (getHeight() * 0.09f + 0.5f);
-                    LogUtils.d("bottomPadding = " + bottomPadding);
                     mHistoryIncome.setPadding(0, 0, 0, bottomPadding);
                 }
             });

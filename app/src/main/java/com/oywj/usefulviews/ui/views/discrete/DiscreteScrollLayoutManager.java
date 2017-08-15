@@ -95,6 +95,7 @@ class DiscreteScrollLayoutManager extends RecyclerView.LayoutManager {
             }
         }
 
+        // 获取当前整个RecyclerView的中心点
         updateRecyclerDimensions();
 
         detachAndScrapAttachedViews(recycler);

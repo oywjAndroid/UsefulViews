@@ -1,9 +1,11 @@
 package com.oywj.usefulviews.ui.adapter;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.oywj.usefulviews.R;
@@ -15,6 +17,8 @@ import com.oywj.usefulviews.ui.views.discrete.DiscreteScrollView;
 import com.oywj.usefulviews.ui.views.discrete.InfiniteScrollAdapter;
 import com.oywj.usefulviews.ui.views.discrete.transform.ScaleTransformer;
 import com.oywj.usefulviews.ui.views.financial.FinancialCategoryLayout;
+import com.oywj.usefulviews.ui.views.financial.RecyclerTabLayout;
+import com.oywj.usefulviews.utils.LogUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -79,15 +83,20 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     }
 
     // 新手专享
-    private void handleNoviceExclusive(ViewHolderNoviceExclusive holder, int position) {
+    private void handleNoviceExclusive(final ViewHolderNoviceExclusive holder, int position) {
 
-        String[] strData = {"9.8", "10.2", "12.0"};
+        String[] strData = {"9.8", "10.2", "12.0","14.0"};
+        String[] titleData = {"零钱包", "一月定期", "二月定期","三月定期"};
         InfiniteScrollAdapter infiniteAdapter = InfiniteScrollAdapter.wrap(new NewbieAdapter(Arrays.asList(strData)));
         holder.discreteScrollView.setAdapter(infiniteAdapter);
-//        holder.discreteScrollView.setItemTransitionTimeMillis(DiscreteScrollViewOptions.getTransitionTime());
-        holder.discreteScrollView.setItemTransformer(new ScaleTransformer.Builder()
-                .setMinScale(1f)
-                .build());
+        holder.discreteScrollView.setItemTransformer(
+                new ScaleTransformer.Builder()
+                        .setMinScale(0.85f)
+                        .build()
+        );
+
+        holder.recyclerTabLayout.setUpWithDiscreteScrollView(holder.discreteScrollView, Arrays.asList(titleData));
+
     }
 
     // 处理用户投资进展
@@ -203,6 +212,8 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
         FinancialCategoryLayout newBieCategory;
         @BindView(R.id.discrete_scroll)
         DiscreteScrollView discreteScrollView;
+        @BindView(R.id.recycler_tabLayout)
+        RecyclerTabLayout recyclerTabLayout;
 
         public ViewHolderNoviceExclusive(View itemView) {
             super(itemView);

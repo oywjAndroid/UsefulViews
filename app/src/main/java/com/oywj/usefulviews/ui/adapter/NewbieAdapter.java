@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by Android on 2017/8/4.
+ * 新手标的适配器。
  */
 public class NewbieAdapter extends RecyclerView.Adapter<NewbieAdapter.ViewHolder> {
     private List<String> mNewbieData;
@@ -32,8 +33,10 @@ public class NewbieAdapter extends RecyclerView.Adapter<NewbieAdapter.ViewHolder
     public void onBindViewHolder(NewbieAdapter.ViewHolder holder, int position) {
         holder.newbieLayout.setNewbiePercentIncome(mNewbieData.get(position));
 
-        if (position == 0) {
+        if (position == 0 || position == 3 || position == 5) {
             holder.newbieLayout.setNewbie7DayVisibility(View.GONE);
+        } else {
+            holder.newbieLayout.setNewbie7DayVisibility(View.VISIBLE);
         }
     }
 

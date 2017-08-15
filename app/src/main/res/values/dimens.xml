@@ -57,7 +57,7 @@
     <dimen name="newbie_adapter_height">382px</dimen>
     <dimen name="newbie_adapter_margin_top">60px</dimen>
     <dimen name="newbie_adapter_margin">35px</dimen>
-    <dimen name="newbie_markView_stroke_width">1.5px</dimen>
+    <dimen name="newbie_markView_stroke_width">0.5px</dimen>
     <dimen name="newbie_percent_padding">8px</dimen>
 
 </resources>
