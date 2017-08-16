@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:orientation="vertical">
 
@@ -25,18 +24,18 @@
         android:layout_marginLeft="@dimen/lines_margin"
         android:layout_marginRight="@dimen/lines_margin" />
 
-
-    <com.oywj.usefulviews.ui.views.financial.RecyclerTabLayout
-        android:id="@+id/recycler_tabLayout"
+    <com.oywj.usefulviews.ui.views.financial.NewbieTabLayout
+        android:id="@+id/newbie_tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:rtl_tabOnScreenLimit="3" />
+        android:paddingBottom="@dimen/newbie_adapter_paddingBottom"
+        android:paddingTop="@dimen/newbie_adapter_margin" />
 
     <com.oywj.usefulviews.ui.views.discrete.DiscreteScrollView
         android:id="@+id/discrete_scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="PxUsage" />
+        android:layout_marginBottom="@dimen/newbie_adapter_margin" />
 
 
 </LinearLayout>

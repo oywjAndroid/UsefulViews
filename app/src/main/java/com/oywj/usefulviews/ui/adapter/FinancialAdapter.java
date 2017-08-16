@@ -1,11 +1,13 @@
 package com.oywj.usefulviews.ui.adapter;
 
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.oywj.usefulviews.R;
@@ -17,8 +19,7 @@ import com.oywj.usefulviews.ui.views.discrete.DiscreteScrollView;
 import com.oywj.usefulviews.ui.views.discrete.InfiniteScrollAdapter;
 import com.oywj.usefulviews.ui.views.discrete.transform.ScaleTransformer;
 import com.oywj.usefulviews.ui.views.financial.FinancialCategoryLayout;
-import com.oywj.usefulviews.ui.views.financial.RecyclerTabLayout;
-import com.oywj.usefulviews.utils.LogUtils;
+import com.oywj.usefulviews.ui.views.financial.NewbieTabLayout;
 
 import java.util.Arrays;
 import java.util.List;
@@ -78,24 +79,62 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     }
 
 
+    // 零钱包
     private void handleCoinPurse(ViewHolderCoinPurse holder, int position) {
-        //TODO
+        holder.textView.setTextColor(ContextCompat.getColor(BasicApplication.getInstance(), R.color.financial_process_selected_color));
+
     }
 
     // 新手专享
     private void handleNoviceExclusive(final ViewHolderNoviceExclusive holder, int position) {
 
-        String[] strData = {"9.8", "10.2", "12.0","14.0"};
-        String[] titleData = {"零钱包", "一月定期", "二月定期","三月定期"};
-        InfiniteScrollAdapter infiniteAdapter = InfiniteScrollAdapter.wrap(new NewbieAdapter(Arrays.asList(strData)));
+        // virtual data
+        String[] strData = {"9.8", "10.5", "12.0"};
+        String[] titleData = {"零钱包", "1月定期", "3月定期"};
+
+        // discreteScrollView
+        final InfiniteScrollAdapter infiniteAdapter = InfiniteScrollAdapter.wrap(new NewbieAdapter(Arrays.asList(strData)));
         holder.discreteScrollView.setAdapter(infiniteAdapter);
         holder.discreteScrollView.setItemTransformer(
                 new ScaleTransformer.Builder()
-                        .setMinScale(0.85f)
+                        .setMinScale(1f)
                         .build()
         );
+        holder.discreteScrollView.addScrollStateChangeListener(new DiscreteScrollView.ScrollStateChangeListener<RecyclerView.ViewHolder>() {
+            @Override
+            public void onScrollStart(@NonNull RecyclerView.ViewHolder currentItemHolder, int adapterPosition) {
 
-        holder.recyclerTabLayout.setUpWithDiscreteScrollView(holder.discreteScrollView, Arrays.asList(titleData));
+            }
+
+            @Override
+            public void onScrollEnd(@NonNull RecyclerView.ViewHolder currentItemHolder, int adapterPosition) {
+                holder.newbieTabLayout.setCurrentItem(infiniteAdapter.getRealPosition(adapterPosition));
+            }
+
+            @Override
+            public void onScroll(float scrollPosition, @NonNull RecyclerView.ViewHolder currentHolder, @NonNull RecyclerView.ViewHolder newCurrent) {
+
+            }
+        });
+
+
+        // tabLayout
+        holder.newbieTabLayout.setTabData(Arrays.asList(titleData));
+        holder.newbieTabLayout.setOnClickTabListener(new NewbieTabLayout.OnClickTabListener() {
+            @Override
+            public void onClickLeftTab() {
+                int currentItem = holder.discreteScrollView.getCurrentItem();
+                holder.discreteScrollView.smoothScrollToPosition(--currentItem);
+                holder.newbieTabLayout.setCurrentItem(infiniteAdapter.getRealPosition(currentItem));
+            }
+
+            @Override
+            public void onClickRightTab() {
+                int currentItem = holder.discreteScrollView.getCurrentItem();
+                holder.discreteScrollView.smoothScrollToPosition(++currentItem);
+                holder.newbieTabLayout.setCurrentItem(infiniteAdapter.getRealPosition(currentItem));
+            }
+        });
 
     }
 
@@ -212,8 +251,8 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
         FinancialCategoryLayout newBieCategory;
         @BindView(R.id.discrete_scroll)
         DiscreteScrollView discreteScrollView;
-        @BindView(R.id.recycler_tabLayout)
-        RecyclerTabLayout recyclerTabLayout;
+        @BindView(R.id.newbie_tabLayout)
+        NewbieTabLayout newbieTabLayout;
 
         public ViewHolderNoviceExclusive(View itemView) {
             super(itemView);
@@ -233,8 +272,12 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     // 零钱包（灵活理财，按日计息）
     public static class ViewHolderCoinPurse extends ViewHolder {
 
+        @BindView(R.id.text)
+        TextView textView;
+
         public ViewHolderCoinPurse(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         public static ViewHolderCoinPurse create(ViewGroup parent) {

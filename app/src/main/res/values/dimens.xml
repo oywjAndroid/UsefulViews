@@ -40,9 +40,9 @@
     <dimen name="lines_size">1.5px</dimen>
     <dimen name="lines_margin">25px</dimen>
     <dimen name="financial_newbie_padding">6px</dimen>
-    <dimen name="financial_newbie_textSize">24px</dimen>
-    <dimen name="financial_newbie_interest_rate_textSize">85px</dimen>
-    <dimen name="financial_newbie_interest_rate_sign_margin_bottom">10px</dimen>
+    <dimen name="financial_newbie_textSize">20px</dimen>
+    <dimen name="financial_newbie_interest_rate_textSize">70px</dimen>
+    <dimen name="financial_newbie_interest_rate_sign_margin_bottom">16px</dimen>
     <dimen name="financial_newbie_historical_annual_income">22px</dimen>
     <dimen name="financial_newbie_historical_annual_income_padding_top_bottom">15px</dimen>
     <dimen name="financial_newbie_historical_annual_income_padding_left_right">40px</dimen>
@@ -50,14 +50,20 @@
     <dimen name="financial_newbie_historical_annual_income_textSize">25px</dimen>
     <dimen name="financial_newbie_margin">15px</dimen>
     <dimen name="financial_newbie_margin_virtual">8px</dimen>
-    <dimen name="financial_newbie_percent_sign_size">35px</dimen>
+    <dimen name="financial_newbie_percent_sign_size">38px</dimen>
+    <dimen name="newbie_category_container_margin_top">30px</dimen>
 
     <!-- newbie adapter-->
-    <dimen name="newbie_adapter_width">520px</dimen>
-    <dimen name="newbie_adapter_height">382px</dimen>
+    <dimen name="newbie_adapter_width">470px</dimen>
+    <dimen name="newbie_adapter_height">315px</dimen>
     <dimen name="newbie_adapter_margin_top">60px</dimen>
     <dimen name="newbie_adapter_margin">35px</dimen>
     <dimen name="newbie_markView_stroke_width">0.5px</dimen>
-    <dimen name="newbie_percent_padding">8px</dimen>
+    <dimen name="newbie_percent_padding">3px</dimen>
+    <dimen name="newbie_tab_middle_textSize">32px</dimen>
+    <dimen name="newbie_tab_side_textSize">24px</dimen>
+    <dimen name="newbie_tab_padding_top_bottom">6px</dimen>
+    <dimen name="newbie_tab_padding_left_right">20px</dimen>
+    <dimen name="newbie_adapter_paddingBottom">5px</dimen>
 
 </resources>

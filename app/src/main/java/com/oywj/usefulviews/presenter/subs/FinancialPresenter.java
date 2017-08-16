@@ -104,6 +104,18 @@ public class FinancialPresenter extends Presenter<FinancialFragment.FinancialUiP
         FinancialData data3 = new FinancialData();
         data3.type = 2;
         dataList.add(data3);
+
+        FinancialData data4 = new FinancialData();
+        data4.type = 3;
+        dataList.add(data4);
+
+        FinancialData data5 = new FinancialData();
+        data5.type = 4;
+        dataList.add(data5);
+
+        FinancialData data6 = new FinancialData();
+        data6.type = 5;
+        dataList.add(data6);
         return dataList;
     }
 

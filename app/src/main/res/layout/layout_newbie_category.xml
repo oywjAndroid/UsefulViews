@@ -5,57 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/newbie_category_container"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/newbie_7day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/newbie_exclusive_bg"
-            android:padding="@dimen/financial_newbie_padding"
-            android:text="@string/newbie_7day"
-            android:textColor="@color/financial_process_selected_color"
-            android:textSize="@dimen/financial_newbie_textSize" />
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/newbie_category_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
-            tools:ignore="UseCompoundDrawables"
-            android:padding="@dimen/newbie_percent_padding">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/newbie_percent_income"
+                android:id="@+id/newbie_7day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10.2"
+                android:background="@drawable/newbie_exclusive_bg"
+                android:padding="@dimen/financial_newbie_padding"
+                android:text="@string/newbie_7day"
                 android:textColor="@color/financial_process_selected_color"
-                android:textSize="@dimen/financial_newbie_interest_rate_textSize" />
+                android:textSize="@dimen/financial_newbie_textSize"
+                android:visibility="gone" />
 
-            <ImageView
-                android:layout_width="@dimen/financial_newbie_percent_sign_size"
-                android:layout_height="@dimen/financial_newbie_percent_sign_size"
-                android:layout_marginBottom="@dimen/financial_newbie_interest_rate_sign_margin_bottom"
-                android:background="@mipmap/percent_sign"
-                tools:ignore="ContentDescription" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:paddingTop="@dimen/newbie_percent_padding"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    android:id="@+id/newbie_percent_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10.2"
+                    android:textColor="@color/financial_process_selected_color"
+                    android:textSize="@dimen/financial_newbie_interest_rate_textSize" />
+
+                <ImageView
+                    android:layout_width="@dimen/financial_newbie_percent_sign_size"
+                    android:layout_height="@dimen/financial_newbie_percent_sign_size"
+                    android:layout_marginBottom="@dimen/financial_newbie_interest_rate_sign_margin_bottom"
+                    android:src="@mipmap/percent_sign"
+                    tools:ignore="ContentDescription" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/history_income"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/historical_annual_income"
+                android:textSize="@dimen/financial_newbie_historical_annual_income" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/history_income"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/historical_annual_income"
-            android:textSize="@dimen/financial_newbie_historical_annual_income" />
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:background="@android:color/white"
             android:paddingLeft="@dimen/financial_newbie_margin_virtual"
             android:paddingRight="@dimen/financial_newbie_margin_virtual">
@@ -64,7 +74,6 @@
                 android:id="@+id/newbie_buy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/financial_newbie_historical_annual_income_margin_top"
                 android:background="@drawable/financial_desc_bg"
                 android:paddingBottom="@dimen/financial_newbie_historical_annual_income_padding_top_bottom"
                 android:paddingLeft="@dimen/financial_newbie_historical_annual_income_padding_left_right"
@@ -76,7 +85,8 @@
 
         </FrameLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
+
 
 </merge>
 

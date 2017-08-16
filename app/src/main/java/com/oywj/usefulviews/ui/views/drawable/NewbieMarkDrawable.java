@@ -35,7 +35,7 @@ public class NewbieMarkDrawable extends Drawable {
     @Override
     public void draw(Canvas canvas) {
         final float dLeft = getBounds().left;
-        final float dTop = getBounds().top;
+        final float dTop = getBounds().top + drawBottomPadding;
         final float dRight = getBounds().right;
         final float dBottom = getBounds().bottom - drawBottomPadding;
         final float dWidth = dRight - dLeft;

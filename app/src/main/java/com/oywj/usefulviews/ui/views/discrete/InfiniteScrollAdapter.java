@@ -9,6 +9,7 @@ import android.view.ViewGroup;
  */
 public class InfiniteScrollAdapter<T extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T> {
 
+    private static final int NOT_INITIALIZED = 0;
     private static final int RESET_BOUND = 100;
 
     public static <T extends RecyclerView.ViewHolder> InfiniteScrollAdapter<T> wrap(
@@ -31,8 +32,9 @@ public class InfiniteScrollAdapter<T extends RecyclerView.ViewHolder> extends Re
         wrapped.onAttachedToRecyclerView(recyclerView);
         if (recyclerView instanceof DiscreteScrollView) {
             layoutManager = (DiscreteScrollLayoutManager) recyclerView.getLayoutManager();
+            currentRangeStart = NOT_INITIALIZED;
         } else {
-            throw new IllegalArgumentException("InfiniteScrollAdapter is supposed to work only with DiscreteScrollView.");
+            throw new RuntimeException("InfiniteScrollAdapter is supposed to work only with DiscreteScrollView.");
         }
     }
 
@@ -44,7 +46,7 @@ public class InfiniteScrollAdapter<T extends RecyclerView.ViewHolder> extends Re
 
     @Override
     public T onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (currentRangeStart == 0) {
+        if (currentRangeStart == NOT_INITIALIZED) {
             resetRange(0);
         }
         return wrapped.onCreateViewHolder(parent, viewType);

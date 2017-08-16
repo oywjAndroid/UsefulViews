@@ -8,8 +8,9 @@
         android:id="@+id/newbie_category_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/newbie_adapter_margin"
-       />
+        android:layout_marginBottom="@dimen/newbie_adapter_margin"
+        android:layout_marginLeft="@dimen/newbie_adapter_margin"
+        android:layout_marginRight="@dimen/newbie_adapter_margin" />
 
 </FrameLayout>
 

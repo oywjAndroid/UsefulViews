@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/newbie_tab_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:textColor="@color/newbie_tab_side_textColor"
+            android:textSize="@dimen/newbie_tab_side_textSize" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/newbie_tab_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/newbie_tab_bg"
+            android:paddingBottom="@dimen/newbie_tab_padding_top_bottom"
+            android:paddingLeft="@dimen/newbie_tab_padding_left_right"
+            android:paddingRight="@dimen/newbie_tab_padding_left_right"
+            android:paddingTop="@dimen/newbie_tab_padding_top_bottom"
+            android:textColor="@color/newbie_tab_middle_textColor"
+            android:textSize="@dimen/newbie_tab_middle_textSize" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/newbie_tab_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:textColor="@color/newbie_tab_side_textColor"
+            android:textSize="@dimen/newbie_tab_side_textSize" />
+    </FrameLayout>
+
+
+</merge>

@@ -10,4 +10,7 @@
     <color name="divider_line_bg_color">#F2F2F2</color>
     <color name="financial_category_more">#BCBCBC</color>
     <color name="lines">#E3E3E3</color>
+    <color name="newbie_tab_bg">#FFF5EA</color>
+    <color name="newbie_tab_middle_textColor">#FF9E3E</color>
+    <color name="newbie_tab_side_textColor">#a5a5a5</color>
 </resources>

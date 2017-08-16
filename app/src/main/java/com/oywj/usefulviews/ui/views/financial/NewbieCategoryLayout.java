@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.oywj.usefulviews.R;
 import com.oywj.usefulviews.autolayout.AutoFrameLayout;
+import com.oywj.usefulviews.autolayout.utils.AutoUtils;
 import com.oywj.usefulviews.ui.views.drawable.NewbieMarkDrawable;
 
 import butterknife.BindView;
@@ -32,6 +34,9 @@ public class NewbieCategoryLayout extends AutoFrameLayout {
     TextView mNewbiePercentIncome;
     @BindView(R.id.history_income)
     TextView mHistoryIncome;
+    @BindView(R.id.newbie_buy)
+    TextView mNewbieBuy;
+
 
     public NewbieCategoryLayout(Context context) {
         this(context, null);
@@ -71,7 +76,7 @@ public class NewbieCategoryLayout extends AutoFrameLayout {
 
     private void configBackgroundDrawable() {
         if (getMeasuredHeight() > 0) {
-            final int markBottomPadding = (int) (getMeasuredHeight() * 0.18f + 0.5f);
+            final int markBottomPadding = (int) (mNewbieBuy.getMeasuredHeight() * 0.49f + 0.5f);
             mBackgroundDrawable.setDrawBottomPadding(markBottomPadding);
             setBackground(mBackgroundDrawable);
         }
@@ -100,24 +105,32 @@ public class NewbieCategoryLayout extends AutoFrameLayout {
         if (visibility == INVISIBLE) {
             visibility = GONE;
         }
+        changeMarginLayoutParams(visibility);
+        mNewbie7day.setVisibility(visibility);
+    }
 
+    private void changeMarginLayoutParams(int visibility) {
         if (visibility == GONE) {
             post(new Runnable() {
                 @Override
                 public void run() {
-                    final int bottomPadding = (int) (getHeight() * 0.09f + 0.5f);
-                    mHistoryIncome.setPadding(0, 0, 0, bottomPadding);
+                    final int markBottomPadding = (int) (mNewbieBuy.getMeasuredHeight() * 0.7f + 0.5f);
+                    MarginLayoutParams params = (MarginLayoutParams) mContainer.getLayoutParams();
+                    params.topMargin = markBottomPadding + AutoUtils.getPercentHeightSize(getResources().getDimensionPixelOffset(R.dimen.newbie_category_container_margin_top));
+                    mContainer.setLayoutParams(params);
                 }
             });
         } else {
             post(new Runnable() {
                 @Override
                 public void run() {
-                    mHistoryIncome.setPadding(0, 0, 0, 0);
+                    final int markBottomPadding = (int) (mNewbieBuy.getMeasuredHeight() * 0.49f + 0.5f);
+                    MarginLayoutParams params = (MarginLayoutParams) mContainer.getLayoutParams();
+                    params.topMargin = markBottomPadding + AutoUtils.getPercentHeightSize(getResources().getDimensionPixelOffset(R.dimen.newbie_category_container_margin_top));
+                    mContainer.setLayoutParams(params);
                 }
             });
         }
-        mNewbie7day.setVisibility(visibility);
     }
 
     @OnClick(R.id.newbie_buy)
