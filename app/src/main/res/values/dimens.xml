@@ -65,5 +65,14 @@
     <dimen name="newbie_tab_padding_top_bottom">6px</dimen>
     <dimen name="newbie_tab_padding_left_right">20px</dimen>
     <dimen name="newbie_adapter_paddingBottom">5px</dimen>
+    <dimen name="rate_of_return_width">45px</dimen>
+    <dimen name="rate_of_return_height">55px</dimen>
+    <dimen name="rate_of_return_textSize">60px</dimen>
+    <dimen name="rate_of_return_margin">5px</dimen>
+    <dimen name="wallet_rate_margin">30px</dimen>
+    <dimen name="wallet_desc_textSize">30px</dimen>
+    <dimen name="wallet_rate_of_return_textSize">24px</dimen>
+    <dimen name="wallet_rate_of_return_margin_top">5px</dimen>
+    <dimen name="divider_height">1px</dimen>
 
 </resources>

@@ -68,7 +68,7 @@ public class FinancialFragment extends BasicFragment<FinancialPresenter> {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         // TODO 获取模拟数据
         List<FinancialData> dataList = mPresenter.simulateData();
-        FinancialAdapter adapter = new FinancialAdapter(dataList);
+        FinancialAdapter adapter = new FinancialAdapter(getContext(), dataList);
         mRecyclerView.setAdapter(adapter);
     }
 

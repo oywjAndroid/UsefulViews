@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/newbie_percent_padding"
+    tools:ignore="UseCompoundDrawables">
+
+    <TextView
+        android:id="@+id/rate_of_return_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5.2"
+        android:textColor="@color/financial_process_selected_color"
+        android:textSize="@dimen/rate_of_return_textSize" />
+
+    <ImageView
+        android:layout_width="@dimen/rate_of_return_width"
+        android:layout_height="@dimen/rate_of_return_height"
+        android:layout_marginBottom="@dimen/rate_of_return_margin"
+        android:layout_gravity="bottom"
+        android:src="@mipmap/percent_sign"
+        tools:ignore="ContentDescription" />
+
+</LinearLayout>

@@ -26,6 +26,8 @@
     <string name="historical_annual_income">历史年收益</string>
     <string name="buy">购买</string>
     <string name="newbie_wallet">零钱包</string>
+    <string name="regular_financial">定期理财</string>
+    <string name="transfer_project">转让项目</string>
     <string-array name="list_items">
         <item>ShapeImageView</item>
     </string-array>

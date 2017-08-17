@@ -17,12 +17,7 @@
         app:showMore="true"
         app:showQuestion="true" />
 
-    <include
-        layout="@layout/divided_line"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/lines_size"
-        android:layout_marginLeft="@dimen/lines_margin"
-        android:layout_marginRight="@dimen/lines_margin" />
+    <include layout="@layout/divided_margin_1px" />
 
     <com.oywj.usefulviews.ui.views.financial.NewbieTabLayout
         android:id="@+id/newbie_tabLayout"

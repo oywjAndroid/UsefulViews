@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
     <include layout="@layout/divided_line" />
@@ -14,21 +15,17 @@
         app:categoryDrawable="@mipmap/icon_current_region"
         app:categoryText="@string/newbie_wallet"
         app:showMore="false"
-        app:showQuestion="false"
-        android:background="@android:color/white"/>
+        app:showQuestion="false" />
 
-    <include
-        layout="@layout/divided_line"
+    <include layout="@layout/divided_margin_1px" />
+
+    <com.oywj.usefulviews.ui.views.AbsoluteListView
+        android:id="@+id/wallet_list_view"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/lines_size"
-        android:layout_marginLeft="@dimen/lines_margin"
-        android:layout_marginRight="@dimen/lines_margin" />
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:divider="@drawable/list_divider"
+        android:dividerHeight="@dimen/divider_height"
+        android:listSelector="@drawable/list_item_selector" />
 
 
 </LinearLayout>

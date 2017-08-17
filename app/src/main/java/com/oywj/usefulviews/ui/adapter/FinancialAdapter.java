@@ -1,18 +1,18 @@
 package com.oywj.usefulviews.ui.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.oywj.usefulviews.R;
 import com.oywj.usefulviews.data.bean.FinancialData;
 import com.oywj.usefulviews.ui.basic.BasicApplication;
+import com.oywj.usefulviews.ui.views.AbsoluteListView;
 import com.oywj.usefulviews.ui.views.BannerLayout;
 import com.oywj.usefulviews.ui.views.FinancialHolderView;
 import com.oywj.usefulviews.ui.views.discrete.DiscreteScrollView;
@@ -34,8 +34,10 @@ import butterknife.ButterKnife;
 public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.ViewHolder> {
 
     private List<FinancialData> mData;
+    private Context mContext;
 
-    public FinancialAdapter(List<FinancialData> data) {
+    public FinancialAdapter(Context context, List<FinancialData> data) {
+        mContext = context;
         mData = data;
     }
 
@@ -71,18 +73,26 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     }
 
     private void handleTransferProject(ViewHolderTransferProject holder, int position) {
-        //TODO
+        String[] strArrays = {"1"};
+        holder.transferListView.setAdapter(
+                new WalletAdapter(mContext, R.layout.adapter_wallet_item, Arrays.asList(strArrays))
+        );
     }
 
     private void handleRegularFinancial(ViewHolderRegularFinancial holder, int position) {
-        //TODO
+        String[] strArrays = {"1", "2", "3", "4", "5"};
+        holder.regularListView.setAdapter(
+                new WalletAdapter(mContext, R.layout.adapter_wallet_item, Arrays.asList(strArrays))
+        );
     }
 
 
     // 零钱包
     private void handleCoinPurse(ViewHolderCoinPurse holder, int position) {
-        holder.textView.setTextColor(ContextCompat.getColor(BasicApplication.getInstance(), R.color.financial_process_selected_color));
-
+        String[] strArrays = {"1"};
+        holder.walletListView.setAdapter(
+                new WalletAdapter(mContext, R.layout.adapter_wallet_item, Arrays.asList(strArrays))
+        );
     }
 
     // 新手专享
@@ -272,8 +282,8 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     // 零钱包（灵活理财，按日计息）
     public static class ViewHolderCoinPurse extends ViewHolder {
 
-        @BindView(R.id.text)
-        TextView textView;
+        @BindView(R.id.wallet_list_view)
+        ListView walletListView;
 
         public ViewHolderCoinPurse(View itemView) {
             super(itemView);
@@ -293,8 +303,12 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     // 定期理财
     public static class ViewHolderRegularFinancial extends ViewHolder {
 
+        @BindView(R.id.regular_list_view)
+        ListView regularListView;
+
         public ViewHolderRegularFinancial(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         public static ViewHolderRegularFinancial create(ViewGroup parent) {
@@ -310,8 +324,14 @@ public class FinancialAdapter extends RecyclerView.Adapter<FinancialAdapter.View
     // 转让项目
     public static class ViewHolderTransferProject extends ViewHolder {
 
+        @BindView(R.id.transfer_project_list_view)
+        AbsoluteListView transferListView;
+        @BindView(R.id.category_regular)
+        FinancialCategoryLayout regularCategory;
+
         public ViewHolderTransferProject(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         public static ViewHolderTransferProject create(ViewGroup parent) {

@@ -13,4 +13,6 @@
     <color name="newbie_tab_bg">#FFF5EA</color>
     <color name="newbie_tab_middle_textColor">#FF9E3E</color>
     <color name="newbie_tab_side_textColor">#a5a5a5</color>
+    <color name="wallet_desc_textColor">#4E4E4E</color>
+    <color name="list_item_pressed_color">#15000000</color>
 </resources>

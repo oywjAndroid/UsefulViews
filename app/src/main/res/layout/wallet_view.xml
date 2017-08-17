@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
     android:orientation="horizontal">
 
-    <TextView
+    <include
+        layout="@layout/rate_of_return"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:layout_margin="@dimen/wallet_rate_margin" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/wallet_desc_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="灵活理财，按日计息"
+            android:textColor="@color/wallet_desc_textColor"
+            android:textSize="@dimen/wallet_desc_textSize" />
+
+
+        <TextView
+            android:id="@+id/wallet_rate_of_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/wallet_rate_of_return_margin_top"
+            android:text="万份日收益1.44元"
+            android:textColor="@color/newbie_tab_side_textColor"
+            android:textSize="@dimen/wallet_rate_of_return_textSize" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@android:color/white"
     android:orientation="vertical">
+
+    <include layout="@layout/divided_line" />
+
+    <com.oywj.usefulviews.ui.views.financial.FinancialCategoryLayout
+        android:id="@+id/category_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:categoryDrawable="@mipmap/icon_regular_region"
+        app:categoryText="@string/regular_financial"
+        app:showMore="true"
+        app:showQuestion="false" />
+
+    <include layout="@layout/divided_margin_1px" />
+
+    <com.oywj.usefulviews.ui.views.AbsoluteListView
+        android:id="@+id/regular_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/list_divider"
+        android:dividerHeight="@dimen/divider_height"
+        android:listSelector="@drawable/list_item_selector" />
 
 </LinearLayout>
